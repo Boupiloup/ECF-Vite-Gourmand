@@ -1,0 +1,59 @@
+/*==  STYLE BOUTON == */
+
+.site-nav {
+    justify-self: center;
+    /* centre le menu dans la colonne du milieu du grid */
+    
+}
+
+.site-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.site-nav a {
+    text-decoration: none;
+    background-color: #FFCD70;
+    border-radius: 999px;
+    padding: 5px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 4px 4px 0 rgba(255, 180, 29, 0.25);
+    /* 0,25 = 25% opacité */
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000;
+
+}
+
+/*==  HEADER == */
+.header-right {
+    width: 250px;
+    /* même largeur que le logo */
+}
+
+.site-header {
+    background-color: rgba(255, 180, 29, 0.06);
+    /* 0,06 = 6% opacité */
+    padding: 16px 0;
+}
+
+.header-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    display: grid;
+    /* utilisation de grid pour faire 3 zones */
+    grid-template-columns: auto 1fr auto;
+    /* 3 colonnes : logo | zone centrale qui prend l'espace | droite */
+    align-items: center;
+}
+
+.site-logo {
+    width: 250px;
+    margin-right: auto;
+}

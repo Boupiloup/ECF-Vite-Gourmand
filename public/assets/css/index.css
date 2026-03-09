@@ -1,0 +1,236 @@
+/*== HERO == */
+
+.hero {
+    background-image: url("../img/image/plat/buffet.jpg");
+    min-height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    /* permet de centrer facilement */
+    align-items: center;
+    /* centre en hauteur */
+    justify-content: center;
+    /* centre en largeur */
+}
+
+.hero-overlay {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* centre la card */
+}
+
+.hero-card h1 {
+    margin: 0;
+    /* enlève la marge par défaut */
+}
+
+.hero-card h2 {
+    margin: 10px 0 10px;
+    /* espace propre : haut | gauche/droite | bas */
+}
+
+.hero-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 999px;
+
+    width: 100%;
+    /* plus large */
+    max-width: 700px;
+    padding: 20px 15px;
+    text-align: center;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    background: linear-gradient(135deg,
+            rgba(176, 176, 176, 0.8),
+            rgb(255, 255, 255));
+}
+
+.btn-primary {
+    text-decoration: none;
+    background-color: #FFCD70;
+    border-radius: 999px;
+    padding: 5px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 4px 4px 0 rgba(255, 180, 29, 0.25);
+    /* 0,25 = 25% opacité */
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #000;
+}
+
+@media (max-width: 410px) {
+    .hero-card {
+        border-radius: 60px;
+    }
+
+}
+
+/*== ABOUT PAGE D'ACCUEIL == */
+
+
+.about {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    max-width: 1200px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 16px;
+}
+
+.about_container {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.img_about {
+    width: 420px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 1px 4px 4px 0 rgba(255, 180, 29, 0.25);
+}
+
+.text_about {
+    max-width: 620px;
+}
+
+@media (max-width: 768px) {
+    .about_container {
+        flex-direction: column;
+    }
+
+    .img_about {
+        max-width: 100%;
+        display: block;
+    }
+}
+
+/*== UNE ÉQUIPE DE PROFESSIONNELS À VOTRE SERVICE == */
+
+.team {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    margin: 0 auto; /* centre la grille dans la page */
+    max-width: 1440px;
+    gap: 100px;
+}
+
+.team-card {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: #FFECCE;
+    border-radius: 50px;
+    box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column; /* empile les éléments verticalement (img, titre, texte) */
+    align-items: center; /* centre horizontalement le contenu */
+
+    padding: 8px 15px;
+    text-align: center; /* centre le texte */
+
+    height: 100%; /* permet aux cartes d'avoir la même hauteur */
+}
+
+.team-card img {
+    width: 70px;
+    height: 70px; /* hauteur fixe pour aligner les titres */
+    object-fit: contain;
+}
+
+.team-card h3 {
+    margin: 10px 0 0px 0;
+    font-size: 1.5rem;
+    color: #8C5517;
+}
+
+.team-card p {
+    margin-top: auto; /* pousse le texte vers le bas pour garder les titres alignés */
+    max-width: 380px; /* limite la largeur du texte pour une meilleure lisibilité */
+    color: #9E4C11;
+
+    line-height: 1.5;
+
+}
+
+.team h2 {
+    text-align: center;
+    padding: 0 0 20px 0;
+}
+
+/*== AVIS CLIENTS == */
+
+.review-header{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.review-card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.review-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-meta h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 420px;
+
+    padding: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: #FFECCE;
+    box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+
+
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 150px;
+}
+
+.review-stars {
+    color: #FF9A23;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.review-card p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.reviews h2 {
+    text-align: center;
+}

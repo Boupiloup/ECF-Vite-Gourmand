@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite & Gourmand</title>
+    <title><?= $pageTitle ?? 'Vite & Gourmand' ?></title>
 
     <!-- Ajout de la fonts "inter" " Playfair Display " & " Playfair"  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/menus.css">
 </head>
 
 <body>
@@ -28,7 +29,7 @@
             <nav class="site-nav">
                 <ul class="site-nav-list">
                     <li><a href="index.php">Accueil</a></li>
-                    <li><a href="menu.php">Menus</a></li>
+                    <li><a href="menus.php">Menus</a></li>
                     <li><a href="contact.php">Contact</a></li>
                     <li><a href="connexion.php">Connexion</a></li>
                 </ul>

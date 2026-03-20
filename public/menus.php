@@ -2,8 +2,9 @@
 
 $pageTitle = 'Nos menus';
 include_once __DIR__ . '/../includes/header.php';
-include_once __DIR__ . '/../config/database.php';
+require_once '../includes/db.php';
 
+$menus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main>
@@ -62,7 +63,8 @@ include_once __DIR__ . '/../config/database.php';
 
             <div class="filter-group">
                 <label for="nombre_personnes" class="visually-hidden">Nombre de personnes</label>
-                <input type="number" id="nombre_personnes" name="nombre_personnes" placeholder="Nombre de personnes" min="0">
+                <input type="number" id="nombre_personnes" name="nombre_personnes" placeholder="Nombre de personnes"
+                    min="0">
             </div>
 
         </form>
@@ -70,103 +72,36 @@ include_once __DIR__ . '/../config/database.php';
 
     <!-- CARDS MENUS -->
 
-<section class="menus-container">
+    <section class="menus-container">
 
-    <div class="menus-grid">
+        <div class="menus-grid">
 
-        <article class="card-menu">
-            <img src="assets/img/image/plat/plat1.jpg"
-                alt="Plat de saumon dans une assiette accompagné de légumes">
+            <?php
+            foreach ($menus as $menu): ?>
 
-            <h3>Saumon et salade de légumes</h3>
+                <?php $images = $pdo->prepare('SELECT * FROM image where menu_id =? ORDER BY id ASC');
+                $images->execute([$menu['id']]);
+                $image = $images->fetch(PDO::FETCH_ASSOC); ?>
 
-            <p>Salade de saumon accompagnée de légumes de saison, parfaite pour un mariage.</p>
+                <article class="card-menu">
+                    <img src="<?php echo htmlspecialchars($image['url'] ?? 'https://picsum.photos/seed/menu2-1/800/600'); ?>"
+                        alt="<?php echo htmlspecialchars($image['alt'] ?? 'Image du menu'); ?>">
+                    <h3><?php echo htmlspecialchars($menu['titre']); ?></h3>
 
-            <div class="card-bottom">
-                <p>15 personnes minimum</p>
-                <p>Prix : 250 €</p>
-                <button class="btn-commander">Voir le menu</button>
-            </div>
-        </article>
+                    <p><?php echo htmlspecialchars($menu['description']); ?></p>
 
-        <article class="card-menu">
-            <img src="assets/img/image/plat/plat2.png"
-                alt="Tartare de légumes rouges présenté dans une assiette">
+                    <div class="card-bottom">
+                        <p><?php echo htmlspecialchars($menu['nombre_personne_min']); ?> personnes minimum</p>
+                        <p>Prix : <?php echo htmlspecialchars($menu['prix_min']); ?> €</p>
+                        <a href="menu_vuedetail.php?id=<?php echo htmlspecialchars($menu['id']); ?>"
+                            class="btn-commander">Voir le menu</a>
+                    </div>
+                </article>
 
-            <h3>Tartare de légumes rouges</h3>
+            <?php endforeach; ?>
+        </div>
 
-            <p>Préparation à base de légumes rouges finement découpés, mélangés à des herbes fraîches et dressés avec soin.</p>
-
-            <div class="card-bottom">
-                <p>15 personnes minimum</p>
-                <p>Prix : 250 €</p>
-                <button class="btn-commander">Voir le menu</button>
-            </div>
-        </article>
-
-        <article class="card-menu">
-            <img src="assets/img/image/plat/plat9.png"
-                alt="Dinde de Noël accompagnée de fruits rôtis">
-
-            <h3>Dinde de Noël</h3>
-
-            <p>Dinde rôtie accompagnée de fruits rôtis, idéale pour un repas festif.</p>
-
-            <div class="card-bottom">
-                <p>15 personnes minimum</p>
-                <p>Prix : 250 €</p>
-                <button class="btn-commander">Voir le menu</button>
-            </div>
-        </article>
-
-        <article class="card-menu">
-            <img src="assets/img/image/plat/plat4.jpg"
-                alt="Pavé de saumon accompagné de légumes de saison">
-
-            <h3>Pavé de saumon</h3>
-
-            <p>Pavé de saumon accompagné de légumes de saison, parfait pour un repas convivial.</p>
-
-            <div class="card-bottom">
-                <p>7 personnes minimum</p>
-                <p>Prix : 100 €</p>
-                <button class="btn-commander">Voir le menu</button>
-            </div>
-        </article>
-
-        <article class="card-menu">
-            <img src="assets/img/image/plat/plat5.jpg"
-                alt="Poisson blanc accompagné de jeunes pousses fraîches">
-
-            <h3>Poisson blanc et jeunes pousses</h3>
-
-            <p>Poisson blanc délicatement préparé, accompagné de jeunes pousses fraîches et d'un assaisonnement léger.</p>
-
-            <div class="card-bottom">
-                <p>35 personnes minimum</p>
-                <p>Prix : 650 €</p>
-                <button class="btn-commander">Voir le menu</button>
-            </div>
-        </article>
-
-        <article class="card-menu">
-            <img src="assets/img/image/plat/plat8.png"
-                alt="Salade de légumes de saison">
-
-            <h3>Salade de légumes</h3>
-
-            <p>Salade de légumes de saison, fraîche et colorée, idéale pour un événement convivial.</p>
-
-            <div class="card-bottom">
-                <p>10 personnes minimum</p>
-                <p>Prix : 130 €</p>
-                <button class="btn-commander">Voir le menu</button>
-            </div>
-        </article>
-
-    </div>
-
-</section>
+    </section>
 
 </main>
 

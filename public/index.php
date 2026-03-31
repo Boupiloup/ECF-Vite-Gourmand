@@ -9,7 +9,7 @@ require_once '../includes/db.php';?>
             <div class="hero-card"> <!-- bloc visuel (bulle) qui contient le texte et le bouton -->
                 <h1>Bienvenue sur Vite & Gourmand</h1>
                 <h2>Traiteur pour tous vos événements</h2>
-                <a class="btn-primary" href="menu.php">Voir les menus</a>
+                <a class="btn-primary" href="menus.php">Voir les menus</a>
             </div>
         </div>
     </section>

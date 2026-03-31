@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/menus.css">
+    <link rel="stylesheet" href="assets/css/vuedetail.css"> 
+    
 </head>
 
 <body>

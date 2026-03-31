@@ -1,0 +1,250 @@
+/* STRUCTURE GÉNÉRALE */
+
+.menu-detail {
+    padding: 40px 20px;
+}
+
+.menu-detail__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.menu-detail__content {
+    display: flex;
+    gap: 40px;
+}
+
+.menu-detail__left {
+    flex: 1;
+}
+
+.menu-detail__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* PARTIE GAUCHE (IMAGE + SLIDER) */
+
+.menu-detail__image {
+    position: relative;
+    max-width: 600px;
+    padding: 0 30px;
+}
+
+.menu-detail__image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border: 1px solid #000000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.slider-prev,
+.slider-next {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background-color: #FFECCE;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.slider-prev {
+    left: -20px;
+}
+
+.slider-next {
+    right: -20px;
+}
+
+.slider-prev:hover,
+.slider-next:hover {
+    background-color: #f3cf95;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-counter {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #FFECCE;
+    max-width: 50px;
+    margin: 10px auto 0;
+    border-radius: 20px;
+    border: 1px solid #00000050;
+}
+
+
+/* TITRE + NAVIGATION */
+
+.menu-detail__back {
+    margin-bottom: 20px;
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu-detail__title {
+    text-align: center;
+    font-size: 40px;
+    color: #8C5517;
+    margin-bottom: 20px;
+}
+
+
+/* COMPOSITION (GAUCHE) */
+
+.menu-detail__composition {
+    margin-top: 30px;
+}
+
+.menu-detail__composition h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.menu-detail__composition p {
+    background-color: #FFECCE;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* PARTIE DROITE (BADGES + INFOS) */
+
+/* Badges */
+.menu-detail__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.menu-detail__badges span {
+    background-color: #FFECCE;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+
+/* ALLERGÈNES */
+
+.menu-detail__allergenes {
+    width: 100%;
+    max-width: 350px;
+    background-color: #FFECCE;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.menu-detail__allergenes summary {
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-detail__allergenes ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
+    width: fit-content;
+    list-style: none;
+}
+
+.menu-detail__allergenes li::before {
+    content: "• ";
+}
+
+
+/* INFOS TEXTE */
+
+.menu-detail__infos {
+    width: 100%;
+    max-width: 350px;
+}
+
+.menu-detail__infos p {
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.menu-detail__infos strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+
+/* BLOCS VISUELS (CTA) */
+
+/* Personnes minimum */
+.menu-detail__minimum {
+    width: 100%;
+    max-width: 350px;
+    background-color: #FFECCE;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Bouton Commander */
+.menu-detail__button {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    background-color: #FFECCE;
+    color: #000;
+    text-align: center;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.menu-detail__button:hover {
+    background-color: #f3cf95;
+    transform: scale(1.05);
+}
+
+.conditions_style {
+    font-size: 1.2rem;
+    text-decoration: underline;
+}

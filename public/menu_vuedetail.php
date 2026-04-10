@@ -195,12 +195,12 @@ if ($id !== null) {
                         </p>
 
                         <p>
-                            <strong>Stock disponible :</strong>
+                            <strong>Commandes restantes :</strong>
                             <?= htmlspecialchars($menu['stock_disponible']) ?>
                         </p>
 
                         <p>
-                            <strong>Prix :</strong>
+                            <strong>Prix pour <?= htmlspecialchars($menu['nombre_personne_min']) ?> personnes :</strong>
                             <?= htmlspecialchars($menu['prix_min']) ?> €
                         </p>
                     </div>

@@ -5,29 +5,27 @@ require_once '../includes/db.php';
 include_once __DIR__ . '/../includes/header.php';
 
 if (!isset($_SESSION['utilisateur_id'])) {
-    header('location: connexion.php');
+    header('Location: connexion.php');
     exit;
 }
 
 $message = null;
-$personnes = null;
+$personnes = 0;
 $prixTotal = null;
 $livraison = 0;
 $totalFinal = null;
 $reduction = 0;
 
 $menuId = $_GET['menu_id'] ?? null;
+$menu = null;
 
 if ($menuId !== null) {
     $stmt = $pdo->prepare('SELECT * FROM menu WHERE id = ?');
     $stmt->execute([$menuId]);
     $menu = $stmt->fetch(PDO::FETCH_ASSOC);
-} else {
-    $menu = null;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
-
     $personnes = (int) ($_POST['personnes'] ?? 0);
     $ville = trim(strtolower($_POST['ville'] ?? ''));
     $adresse = trim($_POST['adresse'] ?? '');
@@ -36,16 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
 
     if ($personnes < $menu['nombre_personne_min']) {
         $message = "Pas assez de personnes";
+    } elseif ($personnes > (int) $menu['stock_disponible']) {
+        $message = "Stock insuffisant pour ce nombre de personnes";
     } else {
-        $message = "Total mis à jour";
-
         $prixParPersonne = $menu['prix_min'] / $menu['nombre_personne_min'];
         $prixTotal = $prixParPersonne * $personnes;
 
         if ($personnes >= ($menu['nombre_personne_min'] + 5)) {
             $reduction = $prixTotal * 0.1;
-        } else {
-            $reduction = 0;
         }
 
         if ($ville === 'bordeaux') {
@@ -56,9 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
 
         $totalFinal = $prixTotal - $reduction + $livraison;
 
+        $utilisateur_id = $_SESSION['utilisateur_id'];
         $menu_id = $menuId;
 
         $sql = "INSERT INTO commande (
+                    utilisateur_id,
                     menu_id,
                     nb_personnes,
                     ville_livraison,
@@ -67,10 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
                     heure_livraison,
                     prix_total,
                     prix_livraison
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
+            $utilisateur_id,
             $menu_id,
             $personnes,
             $ville,
@@ -80,6 +79,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
             $totalFinal,
             $livraison
         ]);
+
+        $nouveauStock = (int) $menu['stock_disponible'] - $personnes;
+
+        $sqlUpdate = "UPDATE menu SET stock_disponible = ? WHERE id = ?";
+        $stmtUpdate = $pdo->prepare($sqlUpdate);
+        $stmtUpdate->execute([$nouveauStock, $menu_id]);
+
+        $menu['stock_disponible'] = $nouveauStock;
+        $message = "Commande enregistrée avec succès";
     }
 }
 ?>

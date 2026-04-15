@@ -4,59 +4,82 @@ $pageTitle = "Commander un menu";
 require_once '../includes/db.php';
 include_once __DIR__ . '/../includes/header.php';
 
+
+// Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['utilisateur_id'])) {
-    header('Location: connexion.php');
+    header('location: connexion.php');
     exit;
 }
 
+// Récupérer l'ID de l'utilisateur connecté
+$utilisateur_id = $_SESSION['utilisateur_id'];
+
+$sql = "SELECT * FROM utilisateur WHERE id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$utilisateur_id]);
+$utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Initialiser les variables
 $message = null;
-$personnes = 0;
+$personnes = null;
 $prixTotal = null;
 $livraison = 0;
 $totalFinal = null;
 $reduction = 0;
 
+// Récupérer l'ID du menu à partir de l'URL
 $menuId = $_GET['menu_id'] ?? null;
-$menu = null;
 
+// Récupérer les détails du menu depuis la base de données
 if ($menuId !== null) {
     $stmt = $pdo->prepare('SELECT * FROM menu WHERE id = ?');
     $stmt->execute([$menuId]);
     $menu = $stmt->fetch(PDO::FETCH_ASSOC);
+} else {
+    $menu = null;
 }
 
+// Traiter la soumission du formulaire de commande
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
+
     $personnes = (int) ($_POST['personnes'] ?? 0);
     $ville = trim(strtolower($_POST['ville'] ?? ''));
     $adresse = trim($_POST['adresse'] ?? '');
     $date = $_POST['date'] ?? '';
     $heure = $_POST['heure'] ?? '';
 
+    // Valider les données du formulaire
     if ($personnes < $menu['nombre_personne_min']) {
         $message = "Pas assez de personnes";
-    } elseif ($personnes > (int) $menu['stock_disponible']) {
-        $message = "Stock insuffisant pour ce nombre de personnes";
     } else {
+        $message = "Total mis à jour";
+
+        // Calculer le prix total de la commande
         $prixParPersonne = $menu['prix_min'] / $menu['nombre_personne_min'];
+        // Calculer le prix total en fonction du nombre de personnes
         $prixTotal = $prixParPersonne * $personnes;
 
+        // Appliquer une réduction de 10% si le nombre de personnes dépasse de 5 le minimum requis
         if ($personnes >= ($menu['nombre_personne_min'] + 5)) {
             $reduction = $prixTotal * 0.1;
+        } 
+        else {
+            $reduction = 0;
         }
 
+        // Calculer les frais de livraison
         if ($ville === 'bordeaux') {
             $livraison = 0;
         } else {
             $livraison = 5;
         }
 
+        // Calculer le total final de la commande
         $totalFinal = $prixTotal - $reduction + $livraison;
 
-        $utilisateur_id = $_SESSION['utilisateur_id'];
         $menu_id = $menuId;
 
         $sql = "INSERT INTO commande (
-                    utilisateur_id,
                     menu_id,
                     nb_personnes,
                     ville_livraison,
@@ -65,11 +88,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
                     heure_livraison,
                     prix_total,
                     prix_livraison
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            $utilisateur_id,
             $menu_id,
             $personnes,
             $ville,
@@ -79,15 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
             $totalFinal,
             $livraison
         ]);
-
-        $nouveauStock = (int) $menu['stock_disponible'] - $personnes;
-
-        $sqlUpdate = "UPDATE menu SET stock_disponible = ? WHERE id = ?";
-        $stmtUpdate = $pdo->prepare($sqlUpdate);
-        $stmtUpdate->execute([$nouveauStock, $menu_id]);
-
-        $menu['stock_disponible'] = $nouveauStock;
-        $message = "Commande enregistrée avec succès";
     }
 }
 ?>
@@ -128,22 +141,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
                     <form method="POST">
                         <div class="form-group">
                             <label for="nom">Nom</label>
-                            <input type="text" id="nom" name="nom" required>
+                            <input type="text" id="nom" name="nom" value="<?= $utilisateur['nom'] ?>" required>
                         </div>
 
                         <div class="form-group">
                             <label for="prenom">Prénom</label>
-                            <input type="text" id="prenom" name="prenom" required>
+                            <input type="text" id="prenom" name="prenom" value="<?= $utilisateur['prenom'] ?>" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" value="<?= $utilisateur['email'] ?>" required>
                         </div>
 
                         <div class="form-group">
                             <label for="telephone">Téléphone</label>
-                            <input type="tel" id="telephone" name="telephone" required>
+                            <input type="tel" id="telephone" name="telephone" value="<?= $utilisateur['telephone'] ?>" required>
                         </div>
 
                         <div class="form-group">

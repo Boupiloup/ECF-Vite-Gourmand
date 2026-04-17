@@ -15,7 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($nom) || empty($prenom) || empty($email) || empty($password)) {
         $message = "Tous les champs sont obligatoires.";
-    } else {
+    } elseif (strlen($password) < 8) {
+        $message = "Le mot de passe doit contenir au moins 8 caractères.";
+    }
+     else {
         $sql = "SELECT * FROM utilisateur WHERE email = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);
@@ -23,6 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($user) {
             $message = "Un compte avec cet email existe déjà. Veuillez choisir un autre email.";
+        } else {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, role_id) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$nom, $prenom, $email, $hashedPassword, 2]);
+
+            header('Location: connexion.php');
+            exit;
         }
     }
 }
@@ -48,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-inscription">
             <label for="password">Mot de passe:</label>
             <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+            <p class="form-help">Minimum 8 caractères</p>
         </div>
 
 

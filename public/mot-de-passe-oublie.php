@@ -16,26 +16,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
 
-        if ($user) {
-            $token = bin2hex(random_bytes(32)); // Génère un token de 64 caractères
-            $expire = date('Y-m-d H:i:s', strtotime('+15 minutes')); // Le token expire dans 15 minutes
+if ($user) {
+    $token = bin2hex(random_bytes(32));
+    $expire = date('Y-m-d H:i:s', strtotime('+15 minutes'));
 
-            // Modifie l'utilisateur concerné :
-            // UPDATE = table à modifier
-            // SET = colonnes à mettre à jour
-            // WHERE = ligne ciblée grâce à l'id utilisateur
-            $sql = "UPDATE utilisateur
-            SET reset_token = ?, reset_token_expire = ?
-            WHERE id = ?";
+    $sql = "UPDATE utilisateur
+    SET reset_token = ?, reset_token_expire = ?
+    WHERE id = ?";
 
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$token, $expire, $user['id']]);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$token, $expire, $user['id']]);
 
-            $lienReset = "reset-password-form.php?token=" . $token;
-        }
+    $lienReset = "reset-password-form.php?token=" . $token;
 
-        $message = "Si un compte existe avec cet email, un lien de réinitialisation a été envoyé.";
+    $message = "Lien de test : <a href='" . htmlspecialchars($lienReset) . "'>Réinitialiser le mot de passe</a>";
+} else {
+    $message = "Si un compte existe avec cet email, un lien de réinitialisation a été envoyé.";
+}
     }
 
 }

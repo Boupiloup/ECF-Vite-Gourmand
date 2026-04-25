@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -33,7 +39,12 @@
                     <li><a href="index.php">Accueil</a></li>
                     <li><a href="menus.php">Menus</a></li>
                     <li><a href="contact.php">Contact</a></li>
-                    <li><a href="connexion.php">Connexion</a></li>
+                    <?php if (isset($_SESSION['utilisateur_id'])): ?>
+                        <li><a href="mes-commandes.php">Mes commandes</a></li>
+                        <li><a href="deconnexion.php">Déconnexion</a></li>
+                    <?php else: ?>
+                        <li><a href="connexion.php">Connexion</a></li>
+                    <?php endif; ?>
                 </ul>
             </nav>
 

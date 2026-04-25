@@ -1,32 +1,21 @@
 <?php
-session_start();
 $pageTitle = "Commander un menu";
 require_once '../includes/db.php';
-include_once __DIR__ . '/../includes/header.php';
 
-/**
- * Vérification de sécurité :
- * Si l'utilisateur n'est pas connecté, on le redirige vers la page de connexion
- */
+/* Sécurité : utilisateur connecté obligatoire */
 if (!isset($_SESSION['utilisateur_id'])) {
     header('Location: connexion.php');
     exit;
 }
 
-/**
- * Récupération des informations de l'utilisateur connecté
- * (nécessaire pour auto-remplir le formulaire et lier la commande)
- */
 $utilisateur_id = $_SESSION['utilisateur_id'];
 
-$sql = "SELECT * FROM utilisateur WHERE id = ?";
-$stmt = $pdo->prepare($sql);
+/* Récupération utilisateur */
+$stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE id = ?");
 $stmt->execute([$utilisateur_id]);
 $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
 
-/**
- * Initialisation des variables utilisées dans la page
- */
+/* Variables */
 $message = null;
 $personnes = null;
 $prixTotal = null;
@@ -34,131 +23,99 @@ $livraison = 0;
 $totalFinal = null;
 $reduction = 0;
 
-/**
- * Récupération de l'ID du menu depuis l'URL
- */
+/* Récupération menu */
 $menuId = $_GET['menu_id'] ?? null;
 
-/**
- * Récupération du menu correspondant en base de données
- */
 if ($menuId !== null) {
-    $stmt = $pdo->prepare('SELECT * FROM menu WHERE id = ?');
+    $stmt = $pdo->prepare("SELECT * FROM menu WHERE id = ?");
     $stmt->execute([$menuId]);
     $menu = $stmt->fetch(PDO::FETCH_ASSOC);
 } else {
     $menu = null;
 }
 
-/**
- * Traitement du formulaire lors de l'envoi (POST)
- */
+/* Traitement formulaire */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
 
-    // Récupération des données du formulaire
     $personnes = (int) ($_POST['personnes'] ?? 0);
     $ville = trim(strtolower($_POST['ville'] ?? ''));
     $adresse = trim($_POST['adresse'] ?? '');
     $date = $_POST['date'] ?? '';
     $heure = $_POST['heure'] ?? '';
+    $code_postal = trim($_POST['code_postal'] ?? '');
 
-    /**
-     * Vérification des règles métier :
-     * - minimum de personnes
-     * - stock disponible
-     */
-    if ($personnes < $menu['nombre_personne_min']) {
+    /* VALIDATION AJOUTÉE */
+    if (
+        empty($personnes) ||
+        empty($ville) ||
+        empty($adresse) ||
+        empty($date) ||
+        empty($heure) ||
+        empty($code_postal)
+    ) {
+        $message = "Tous les champs sont obligatoires.";
+    } elseif ($personnes < $menu['nombre_personne_min']) {
         $message = "Pas assez de personnes.";
     } elseif ($personnes > (int) $menu['stock_disponible']) {
-        $message = "Stock insuffisant pour ce nombre de personnes.";
+        $message = "Stock insuffisant.";
     } else {
 
-        /**
-         * Calcul du prix par personne
-         */
+        /* Calcul prix */
         $prixParPersonne = $menu['prix_min'] / $menu['nombre_personne_min'];
-
-        /**
-         * Calcul du prix total selon le nombre de personnes
-         */
         $prixTotal = $prixParPersonne * $personnes;
 
-        /**
-         * Application de la réduction :
-         * -10% si le nombre de personnes dépasse le minimum + 5
-         */
         if ($personnes >= ($menu['nombre_personne_min'] + 5)) {
             $reduction = $prixTotal * 0.1;
-        } else {
-            $reduction = 0;
         }
 
         /**
-         * Calcul des frais de livraison :
-         * Gratuit pour Bordeaux, sinon forfait de 5€
+         * Livraison simplifiée
          */
-        if ($ville === 'bordeaux') {
-            $livraison = 0;
-        } else {
-            $livraison = 5;
-        }
+        $livraison = ($ville === 'bordeaux') ? 0 : 5;
 
-        /**
-         * Calcul du total final de la commande
-         */
         $totalFinal = $prixTotal - $reduction + $livraison;
 
-        $menu_id = $menuId;
-
-        /**
-         * Insertion de la commande en base de données
-         * avec lien vers l'utilisateur connecté
-         */
+        /* INSERT CORRECT */
         $sql = "INSERT INTO commande (
-                    utilisateur_id,
-                    menu_id,
-                    nb_personnes,
-                    ville_livraison,
-                    adresse_livraison,
-                    date_prestation,
-                    heure_livraison,
-                    prix_total,
-                    prix_livraison
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            utilisateur_id,
+            menu_id,
+            nb_personnes,
+            ville_livraison,
+            adresse_livraison,
+            date_prestation,
+            heure_livraison,
+            prix_total,
+            prix_livraison,
+            code_postal
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             $utilisateur_id,
-            $menu_id,
+            $menuId,
             $personnes,
             $ville,
             $adresse,
             $date,
             $heure,
             $totalFinal,
-            $livraison
+            $livraison,
+            $code_postal
         ]);
 
-        /**
-         * Mise à jour du stock du menu après validation de la commande
-         */
+        /* Mise à jour stock*/
         $nouveauStock = (int) $menu['stock_disponible'] - $personnes;
 
-        $sqlUpdate = "UPDATE menu SET stock_disponible = ? WHERE id = ?";
-        $stmtUpdate = $pdo->prepare($sqlUpdate);
-        $stmtUpdate->execute([$nouveauStock, $menu_id]);
+        $stmtUpdate = $pdo->prepare("UPDATE menu SET stock_disponible = ? WHERE id = ?");
+        $stmtUpdate->execute([$nouveauStock, $menuId]);
 
-        /**
-         * Mise à jour locale du stock pour l'affichage immédiat dans la page
-         */
         $menu['stock_disponible'] = $nouveauStock;
 
-        /**
-         * Message de confirmation utilisateur
-         */
         $message = "Commande enregistrée avec succès.";
     }
 }
+
+include_once __DIR__ . '/../includes/header.php';
 ?>
 
 <main>
@@ -218,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
                             <input type="tel" id="telephone" name="telephone"
                                 value="<?= htmlspecialchars($utilisateur['telephone'] ?? '') ?>" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="personnes">Nombre de personnes</label>
                             <input type="number" id="personnes" name="personnes" min="1" required>
@@ -227,6 +184,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
                         <div class="form-group">
                             <label for="ville">Ville</label>
                             <input type="text" id="ville" name="ville" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="code_postal">Code postal</label>
+                            <input type="text" id="code_postal" name="code_postal" required>
                         </div>
 
                         <div class="form-group">

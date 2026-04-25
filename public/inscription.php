@@ -1,5 +1,4 @@
 <?php
-session_start();
 $pageTitle = "Inscription";
 require_once '../includes/db.php';
 include_once __DIR__ . '/../includes/header.php';
@@ -22,12 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if (
-        empty($nom) ||
-        empty($prenom) ||
-        empty($telephone) ||
-        empty($email) ||
-        empty($adresse) ||
-        empty($password)
+        empty($nom) || empty($prenom) || empty($telephone) || empty($email) || empty($adresse) || empty($password)
     ) {
         $message = "Tous les champs sont obligatoires.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -92,10 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="form-inscription">
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" placeholder="Mot de passe" required>
-            <p class="form-help">Minimum 10 caractères, avec une majuscule, une minuscule, un chiffre et un caractère
-                spécial.</p>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" minlength="10" required>
+            <small class="form-help">
+                (10 caractères min. • maj • min • chiffre • spécial)
+            </small>
         </div>
 
         <?php if ($message): ?>

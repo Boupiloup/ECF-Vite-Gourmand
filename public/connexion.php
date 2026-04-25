@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $pageTitle = "Connexion";
 require_once '../includes/db.php';
 include_once __DIR__ . '/../includes/header.php';
@@ -40,6 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-connexion">
             <label for="password">Mot de passe:</label>
             <input type="password" name="password" placeholder="Mot de passe" required>
+        </div>
+        <div>
+            <a href="mot-de-passe-oublie.php" class="forgot-password">
+                Mot de passe oublié ?
+            </a>
         </div>
     </div>
 

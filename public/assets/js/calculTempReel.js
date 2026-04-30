@@ -12,9 +12,9 @@ inputPersonnes.addEventListener('input', () => {
     const ville = inputVille.value.trim().toLowerCase();
 
     if (personnes < minPersonnes) {
-        totalTempReel.innerHTML = '<strong>Total estimé : </strong>À calculer (Minimum ' + minPersonnes + ' personnes)';
-        livraisonTempReel.innerHTML = '<strong>Livraison estimée : </strong>0.00 €';
-        reductionTempReel.innerHTML = '<strong>Réduction estimée : </strong>0.00 €';
+        totalTempReel.innerHTML = '<strong>Total estimé : </strong>À calculer';
+        livraisonTempReel.innerHTML = '<strong>Livraison : </strong>0.00 €';
+        reductionTempReel.innerHTML = '<strong>Réduction : </strong>0.00 €';
     } else {
         const prixParPersonne = prixMin / minPersonnes;
         const prixTotal = prixParPersonne * personnes;
@@ -34,9 +34,9 @@ inputPersonnes.addEventListener('input', () => {
 
         const total = prixTotal - reduction + livraison;
 
-        livraisonTempReel.innerHTML = '<strong>Livraison estimée : </strong>' + livraison.toFixed(2) + ' €';
+        livraisonTempReel.innerHTML = '<strong>Livraison : </strong>' + livraison.toFixed(2) + ' €';
+        reductionTempReel.innerHTML = '<strong>Réduction : </strong>' + reduction.toFixed(2) + ' €';
         totalTempReel.innerHTML = '<strong>Total estimé : </strong>' + total.toFixed(2) + ' €';
-        reductionTempReel.innerHTML = '<strong>Réduction estimée : </strong>' + reduction.toFixed(2) + ' €';
     }
 });
 

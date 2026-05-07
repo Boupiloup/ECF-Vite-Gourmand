@@ -25,6 +25,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/menus.css">
     <link rel="stylesheet" href="assets/css/vuedetail.css"> 
+    <link rel="stylesheet" href="assets/css/mes-commandes.css">
+    <link rel="stylesheet" href="assets/css/detail-commande.css">
     
 </head>
 

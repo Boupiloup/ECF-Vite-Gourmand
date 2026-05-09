@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $code_postal,
                 $ville,
                 $hashedPassword,
-                2
+                3
             ]);
 
             // Envoi de l'email de bienvenue

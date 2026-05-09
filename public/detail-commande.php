@@ -20,6 +20,7 @@ require_once '../includes/db.php';
 $sql = "
     SELECT
         commande.id,
+        commande.statut_commande,
         commande.date_commande,
         commande.date_prestation,
         commande.heure_livraison,
@@ -130,6 +131,22 @@ include_once __DIR__ . '/../includes/header.php';
             <a href="mes-commandes.php" class="commande-detail-back">
                 Retour à mes commandes
             </a>
+
+            <?php if ($commande['statut_commande'] === 'en_attente'): ?>
+
+                <a href="modifier-commande.php?id=<?= htmlspecialchars($commande['id']) ?>" class="btn-modifier-commande">
+                    Modifier la commande
+                </a>
+
+                <form action="annuler-commande.php" method="post">
+                    <input type="hidden" name="commande_id" value="<?= htmlspecialchars($commande['id']) ?>">
+
+                    <button type="submit" class="btn-annuler-commande">
+                        Annuler la commande
+                    </button>
+                </form>
+
+            <?php endif; ?>
         </div>
     </section>
 </main>

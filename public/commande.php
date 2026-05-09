@@ -87,8 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
             heure_livraison,
             prix_total,
             prix_livraison,
-            code_postal
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            code_postal,
+            statut_commande
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
@@ -101,7 +102,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
             $heure,
             $totalFinal,
             $livraison,
-            $code_postal
+            $code_postal,
+            'en_attente'
         ]);
 
         /* Envoi de l'email de confirmation de commande */
@@ -109,7 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
 
         $messageEmail = "
             <p>Bonjour " . htmlspecialchars($utilisateur['prenom']) . ",</p>
-            <p>Votre commande a été enregistrée avec succès !</p>
+            <p>Votre commande a été enregistrée avec succès.</p>
+            <p>Elle est actuellement en attente de validation.</p>
 
             <h2>Détail de votre commande</h2>
 
@@ -122,21 +125,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $menu) {
             <p><strong>Réduction :</strong> " . htmlspecialchars(number_format($reduction, 2, ',', ' ')) . " €</p>
             <p><strong>Total à payer :</strong> " . htmlspecialchars(number_format($totalFinal, 2, ',', ' ')) . " €</p>
 
-            <p>Merci pour votre commande !</p>
+            <p>Merci pour votre commande.</p>
             <p>L'équipe Vite et Gourmand</p>
         ";
 
         envoyerEmail($utilisateur['email'], $sujet, $messageEmail);
 
-        /* Mise à jour stock */
-        $nouveauStock = (int) $menu['stock_disponible'] - $personnes;
-
-        $stmtUpdate = $pdo->prepare("UPDATE menu SET stock_disponible = ? WHERE id = ?");
-        $stmtUpdate->execute([$nouveauStock, $menuId]);
-
-        $menu['stock_disponible'] = $nouveauStock;
-
-        $message = "Commande enregistrée avec succès.";
+        $message = "Commande enregistrée avec succès. Elle est en attente de validation.";
     }
 }
 

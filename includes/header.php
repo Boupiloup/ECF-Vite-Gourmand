@@ -24,10 +24,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/menus.css">
-    <link rel="stylesheet" href="assets/css/vuedetail.css"> 
+    <link rel="stylesheet" href="assets/css/vuedetail.css">
     <link rel="stylesheet" href="assets/css/mes-commandes.css">
     <link rel="stylesheet" href="assets/css/detail-commande.css">
-    
+
 </head>
 
 <body>
@@ -42,10 +42,23 @@ if (session_status() === PHP_SESSION_NONE) {
                     <li><a href="menus.php">Menus</a></li>
                     <li><a href="contact.php">Contact</a></li>
                     <?php if (isset($_SESSION['utilisateur_id'])): ?>
-                        <li><a href="mes-commandes.php">Mes commandes</a></li>
+
+                        <?php if ($_SESSION['utilisateur_role'] == 3): ?>
+                            <li><a href="user-dashboard.php">Mon espace</a></li>
+
+                        <?php elseif ($_SESSION['utilisateur_role'] == 2): ?>
+                            <li><a href="employe-dashboard.php">Espace employé</a></li>
+
+                        <?php elseif ($_SESSION['utilisateur_role'] == 1): ?>
+                            <li><a href="admin-dashboard.php">Espace administrateur</a></li>
+                        <?php endif; ?>
+
                         <li><a href="deconnexion.php">Déconnexion</a></li>
+
                     <?php else: ?>
+
                         <li><a href="connexion.php">Connexion</a></li>
+
                     <?php endif; ?>
                 </ul>
             </nav>

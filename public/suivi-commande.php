@@ -67,22 +67,22 @@ include_once __DIR__ . '/../includes/header.php';
                     <strong>Statut :</strong>
 
                     <?php if ($commande['statut_commande'] === 'en_attente'): ?>
-    En attente de validation
-<?php elseif ($commande['statut_commande'] === 'accepte'): ?>
-    Commande acceptée
-<?php elseif ($commande['statut_commande'] === 'annulee'): ?>
-    Commande annulée
-<?php elseif ($commande['statut_commande'] === 'en_preparation'): ?>
-    En préparation
-<?php elseif ($commande['statut_commande'] === 'en_cours_de_livraison'): ?>
-    En cours de livraison
-<?php elseif ($commande['statut_commande'] === 'livree'): ?>
-    Livrée
-<?php elseif ($commande['statut_commande'] === 'en_attente_retour_materiel'): ?>
-    En attente du retour matériel
-<?php elseif ($commande['statut_commande'] === 'terminee'): ?>
-    Terminée
-<?php endif; ?>
+                        En attente de validation
+                    <?php elseif ($commande['statut_commande'] === 'accepte'): ?>
+                        Commande acceptée
+                    <?php elseif ($commande['statut_commande'] === 'annulee'): ?>
+                        Commande annulée
+                    <?php elseif ($commande['statut_commande'] === 'en_preparation'): ?>
+                        En préparation
+                    <?php elseif ($commande['statut_commande'] === 'en_cours_de_livraison'): ?>
+                        En cours de livraison
+                    <?php elseif ($commande['statut_commande'] === 'livree'): ?>
+                        Livrée
+                    <?php elseif ($commande['statut_commande'] === 'en_attente_retour_materiel'): ?>
+                        En attente du retour matériel
+                    <?php elseif ($commande['statut_commande'] === 'terminee'): ?>
+                        Terminée
+                    <?php endif; ?>
                 </p>
 
                 <a href="detail-commande.php?id=<?= htmlspecialchars($commande['id']) ?>">

@@ -77,36 +77,43 @@ include_once __DIR__ . '/../includes/header.php';
                             <td><?= htmlspecialchars($commande['code_postal']) ?></td>
                             <td><?= htmlspecialchars($commande['nb_personnes']) ?></td>
                             <td><?= htmlspecialchars($commande['prix_total']) ?> €</td>
-<td>
-    <?php if ($commande['statut_commande'] === 'en_attente'): ?>
-        En attente
+                            <td>
+                                <?php if ($commande['statut_commande'] === 'en_attente'): ?>
+                                    En attente
 
-    <?php elseif ($commande['statut_commande'] === 'accepte'): ?>
-        Acceptée
+                                <?php elseif ($commande['statut_commande'] === 'accepte'): ?>
+                                    Acceptée
 
-    <?php elseif ($commande['statut_commande'] === 'annulee'): ?>
-        Annulée
+                                <?php elseif ($commande['statut_commande'] === 'annulee'): ?>
+                                    Annulée
 
-    <?php elseif ($commande['statut_commande'] === 'en_preparation'): ?>
-        En préparation
+                                <?php elseif ($commande['statut_commande'] === 'en_preparation'): ?>
+                                    En préparation
 
-    <?php elseif ($commande['statut_commande'] === 'en_cours_de_livraison'): ?>
-        En cours de livraison
+                                <?php elseif ($commande['statut_commande'] === 'en_cours_de_livraison'): ?>
+                                    En cours de livraison
 
-    <?php elseif ($commande['statut_commande'] === 'livree'): ?>
-        Livrée
+                                <?php elseif ($commande['statut_commande'] === 'livree'): ?>
+                                    Livrée
 
-    <?php elseif ($commande['statut_commande'] === 'en_attente_retour_materiel'): ?>
-        En attente du retour matériel
+                                <?php elseif ($commande['statut_commande'] === 'en_attente_retour_materiel'): ?>
+                                    En attente du retour matériel
 
-    <?php elseif ($commande['statut_commande'] === 'terminee'): ?>
-        Terminée
-    <?php endif; ?>
-</td>
+                                <?php elseif ($commande['statut_commande'] === 'terminee'): ?>
+                                    Terminée
+                                <?php endif; ?>
+                            </td>
                             <td>
                                 <a href="detail-commande.php?id=<?= htmlspecialchars($commande['id']) ?>">
                                     Voir détail
                                 </a>
+
+                                <?php if ($commande['statut_commande'] === 'terminee'): ?>
+                                    <br>
+                                    <a href="laisser-avis.php?commande_id=<?= htmlspecialchars($commande['id']) ?>">
+                                        Laisser un avis
+                                    </a>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -1,5 +1,4 @@
 <?php
-
 $pageTitle = "Connexion";
 require_once '../includes/db.php';
 include_once __DIR__ . '/../includes/header.php';
@@ -17,12 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($password, $user['mot_de_passe'])) {
-        $_SESSION['utilisateur_id'] = $user['id'];
-        $_SESSION['utilisateur_email'] = $user['email'];
-        $_SESSION['utilisateur_role'] = $user['role_id'];
 
-        header('location: index.php');
-        exit;
+        if ((int) $user['actif'] !== 1) {
+            $message = "Ce compte est désactivé.";
+        } else {
+            $_SESSION['utilisateur_id'] = $user['id'];
+            $_SESSION['utilisateur_email'] = $user['email'];
+            $_SESSION['utilisateur_role'] = $user['role_id'];
+
+            header('location: index.php');
+            exit;
+        }
 
     } else {
         $message = "Email ou mot de passe incorrect";

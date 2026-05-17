@@ -14,7 +14,7 @@ $sql = "
     JOIN utilisateur ON avis.utilisateur_id = utilisateur.id
     WHERE avis.valide = 1
     ORDER BY avis.date_avis DESC
-    LIMIT 6
+    LIMIT 3
 ";
 
 $stmt = $pdo->prepare($sql);

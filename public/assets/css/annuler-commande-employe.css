@@ -1,0 +1,96 @@
+/* annuler-commande-employe.css */
+
+.annuler-commande-employe {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.annuler-commande-employe h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 20px;
+}
+
+.texte-commande-annulation {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.formulaire-annulation {
+    margin: 0 auto 25px auto;
+    padding: 25px;
+    background-color: #FFECCE;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.formulaire-annulation label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.formulaire-annulation select,
+.formulaire-annulation textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+}
+
+.formulaire-annulation textarea {
+    min-height: 120px;
+}
+
+.bouton-confirmer-annulation {
+    width: 100%;
+    padding: 12px;
+    background-color: #f3a19b;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bouton-confirmer-annulation:hover {
+    background-color: #e46f66;
+}
+
+.bouton-retour-annulation {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 10px 18px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.bouton-retour-annulation:hover {
+    background-color: #FFB41D;
+}
+
+.message-erreur-annulation {
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #f8d7da;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .annuler-commande-employe {
+        padding: 25px 15px;
+    }
+
+    .formulaire-annulation {
+        padding: 20px;
+    }
+}

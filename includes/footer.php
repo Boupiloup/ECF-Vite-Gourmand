@@ -75,5 +75,7 @@ foreach ($horaires as $horaire) {
     </div>
 </footer>
 
+<script src="assets/js/burger.js"></script>
+
 </body>
 </html>

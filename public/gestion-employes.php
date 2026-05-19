@@ -27,12 +27,12 @@ require_once __DIR__ . '/../includes/header.php';
 <main class="gestion-employes">
     <h1>Gestion des employés</h1>
 
-    <a href="creer-employe.php">Créer un compte employé</a>
+    <a href="creer-employe.php" class="gestion-employes-ajouter">Créer un compte employé</a>
 
     <?php if (empty($employes)) : ?>
-        <p>Aucun employé trouvé.</p>
+        <p class="gestion-employes-vide">Aucun employé trouvé.</p>
     <?php else : ?>
-        <table>
+        <table class="gestion-employes-table">
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -56,11 +56,11 @@ require_once __DIR__ . '/../includes/header.php';
                         </td>
                         <td>
                             <?php if ($employe['actif']) : ?>
-                                <a href="desactiver-employe.php?id=<?= $employe['id'] ?>">
+                                <a href="desactiver-employe.php?id=<?= $employe['id'] ?>" class="gestion-employes-desactiver">
                                     Désactiver
                                 </a>
                             <?php else : ?>
-                                <span>Compte désactivé</span>
+                                <span class="gestion-employes-inactif">Compte désactivé</span>
                             <?php endif; ?>
                         </td>
                     </tr>

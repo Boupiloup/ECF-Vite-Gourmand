@@ -1,0 +1,88 @@
+/* employe-dashboard.css */
+
+.employe-dashboard {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 45px 20px;
+}
+
+.employe-dashboard h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 35px;
+}
+
+.employe-dashboard section {
+    background-color: #FFECCE;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.employe-dashboard h2 {
+    color: #8C5517;
+    margin-bottom: 15px;
+}
+
+.employe-dashboard p {
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.employe-dashboard .btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.employe-dashboard .btn:hover {
+    background-color: #FFB41D;
+}
+
+.employe-dashboard ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding-left: 0;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.employe-dashboard li {
+    margin-bottom: 0;
+}
+
+.employe-dashboard li a {
+    display: block;
+    padding: 18px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.employe-dashboard li a:hover {
+    background-color: #FFB41D;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .employe-dashboard {
+        padding: 25px 15px;
+    }
+
+    .employe-dashboard section {
+        padding: 20px;
+    }
+
+    .employe-dashboard ul {
+        grid-template-columns: 1fr;
+    }
+}

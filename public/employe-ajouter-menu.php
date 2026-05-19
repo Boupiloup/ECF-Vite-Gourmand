@@ -121,10 +121,10 @@ require_once __DIR__ . '/../includes/header.php';
     <h1>Ajouter un menu</h1>
 
     <?php if (!empty($messageErreur)) : ?>
-        <p><?= htmlspecialchars($messageErreur) ?></p>
+        <p class="menu-form-erreur"><?= htmlspecialchars($messageErreur) ?></p>
     <?php endif; ?>
 
-    <form method="POST">
+    <form method="POST" class="menu-form">
 
         <label for="titre">Titre du menu</label>
         <input type="text" id="titre" name="titre" required>
@@ -164,7 +164,7 @@ require_once __DIR__ . '/../includes/header.php';
         <label for="stock_disponible">Stock disponible</label>
         <input type="number" id="stock_disponible" name="stock_disponible" min="0" required>
 
-        <fieldset>
+        <fieldset class="menu-form-fieldset">
             <legend>Plats associés au menu</legend>
 
             <?php foreach ($plats as $plat) : ?>
@@ -180,16 +180,16 @@ require_once __DIR__ . '/../includes/header.php';
             <?php endforeach; ?>
         </fieldset>
 
-        <label>
+        <label class="menu-form-checkbox">
             <input type="checkbox" name="actif" checked>
             Menu actif
         </label>
 
-        <button type="submit">Ajouter le menu</button>
+        <button type="submit" class="menu-form-bouton">Ajouter le menu</button>
 
     </form>
 
-    <a href="gestion-menus.php">Retour à la gestion des menus</a>
+    <a href="gestion-menus.php" class="menu-form-retour">Retour à la gestion des menus</a>
 
 </main>
 

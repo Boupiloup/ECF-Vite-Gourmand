@@ -4,7 +4,30 @@ $pageTitle = 'Nos menus';
 include_once __DIR__ . '/../includes/header.php';
 require_once '../includes/db.php';
 
-$menus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
+/* Récupère tous les menus */
+$tousLesMenus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
+
+/* Page actuelle */
+$page = $_GET['page'] ?? 1;
+$page = (int) $page;
+
+/* Empêche une page inférieure à 1 */
+if ($page < 1) {
+    $page = 1;
+}
+
+/* Nombre de menus par page */
+$menusParPage = 6;
+
+/* Nombre total de pages */
+$totalMenus = count($tousLesMenus);
+$totalPages = ceil($totalMenus / $menusParPage);
+
+/* Point de départ */
+$depart = ($page - 1) * $menusParPage;
+
+/* Menus affichés sur la page */
+$menus = array_slice($tousLesMenus, $depart, $menusParPage);
 
 $themes = $pdo->query('SELECT * FROM theme')->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,6 +48,11 @@ $regimes = $pdo->query('SELECT * FROM regime')->fetchAll(PDO::FETCH_ASSOC);
     <!-- FILTRES MENUS -->
 
     <section class="filtre-container">
+
+        <button type="button" class="filter-toggle" id="filterToggle">
+            Filtres ▼
+        </button>
+
         <form id="filterForm" class="filter-form" method="GET">
 
             <div class="filter-group">
@@ -108,11 +136,23 @@ $regimes = $pdo->query('SELECT * FROM regime')->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         </div>
 
+        <div class="pagination">
+
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+
+                <a href="menus.php?page=<?= $i ?>">
+                    <?= $i ?>
+                </a>
+
+            <?php endfor; ?>
+
+        </div>
     </section>
 
 </main>
 
 <script src="assets/js/filtresMenus.js"></script>
+<script src="assets/js/toggleFiltres.js"></script>
 
 <?php
 include_once __DIR__ . '/../includes/footer.php';

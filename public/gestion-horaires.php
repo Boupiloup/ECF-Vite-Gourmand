@@ -34,17 +34,17 @@ $horaires = $stmt->fetchAll(PDO::FETCH_ASSOC);
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<main class="gestion-horaires-page">
+<main class="page-gestion-horaires">
 
     <h1>Gestion des horaires</h1>
 
     <?php if (empty($horaires)) : ?>
 
-        <p>Aucun horaire enregistré pour le moment.</p>
+        <p class="message-horaires-vide">Aucun horaire enregistré pour le moment.</p>
 
     <?php else : ?>
 
-        <table>
+        <table class="tableau-horaires">
             <thead>
                 <tr>
                     <th>Jour</th>
@@ -61,7 +61,7 @@ require_once __DIR__ . '/../includes/header.php';
                         <td><?= htmlspecialchars($horaire['heure_ouverture']) ?></td>
                         <td><?= htmlspecialchars($horaire['heure_fermeture']) ?></td>
                         <td>
-                            <a href="modifier-horaire.php?id=<?= htmlspecialchars($horaire['id']) ?>">
+                            <a href="modifier-horaire.php?id=<?= htmlspecialchars($horaire['id']) ?>" class="bouton-modifier-horaire">
                                 Modifier
                             </a>
                         </td>

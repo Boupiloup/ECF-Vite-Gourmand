@@ -135,36 +135,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $statutLisible = $statuts_labels[$nouveau_statut] ?? $nouveau_statut;
 
             if ($nouveau_statut === 'en_attente_retour_materiel') {
-                $sujetMail = 'retour matériel pour votre commande';
+                $sujetMail = 'Retour matériel pour votre commande';
 
                 $messageMail = "
-                <p>Bonjour " . htmlspecialchars($commande['prenom']) . ",</p>
+                                <p>Bonjour " . htmlspecialchars($commande['prenom']) . ",</p>
 
-                <p>Votre commande est en attente du retour du matériel.</p>
+                                <p>Votre commande est en attente du retour du matériel.</p>
 
-                <p>Conformément à nos conditions générales de vente, le matériel doit être restitué sous 10 jours ouvrés.</p>
+                                <p>Conformément à nos conditions générales de vente, le matériel doit être restitué sous 10 jours ouvrés.</p>
 
-                <p>Sans retour du matériel dans ce délai, des frais de 600 € pourront être appliqués.</p>
+                                <p>Sans retour du matériel dans ce délai, des frais de 600 € pourront être appliqués.</p>
 
-                <p>Merci de prendre contact avec Vite et Gourmand afin d'organiser la restitution du matériel.</p>
+                                <p>Merci de prendre contact avec Vite et Gourmand afin d'organiser la restitution du matériel.</p>
 
-                <p>L'équipe Vite et Gourmand</p>
-                ";
+                                <p>L'équipe Vite et Gourmand</p>";
+
+            } elseif ($nouveau_statut === 'terminee') {
+                $sujetMail = 'Votre commande est terminée';
+
+                $messageMail = "
+                                <p>Bonjour " . htmlspecialchars($commande['prenom']) . ",</p>
+
+                                <p>Votre commande est maintenant terminée.</p>
+
+                                <p>Vous pouvez vous connecter à votre espace client afin de laisser un avis
+                                avec une note et un commentaire.</p>
+
+                                <p>Merci pour votre confiance.</p>
+
+                                <p>L'équipe Vite et Gourmand</p>";
+
             } else {
                 $sujetMail = 'Mise à jour de votre commande';
 
                 $messageMail = "
-                            <p>Bonjour " . htmlspecialchars($commande['prenom']) . ",</p>
+                                <p>Bonjour " . htmlspecialchars($commande['prenom']) . ",</p>
 
-                            <p>Le statut de votre commande a été mis à jour.</p>
+                                <p>Le statut de votre commande a été mis à jour.</p>
 
-                            <p><strong>Nouveau statut :</strong> " . htmlspecialchars($statutLisible) . "</p>
+                                <p><strong>Nouveau statut :</strong> " . htmlspecialchars($statutLisible) . "</p>
 
-                            <p><strong>Menu :</strong> " . htmlspecialchars($commande['menu_titre']) . "</p>
+                                <p><strong>Menu :</strong> " . htmlspecialchars($commande['menu_titre']) . "</p>
 
-                            <p>Merci pour votre confiance.</p>
+                                <p>Merci pour votre confiance.</p>
 
-                            <p>L'équipe Vite et Gourmand</p>";
+                                <p>L'équipe Vite et Gourmand</p>";
             }
 
             envoyerEmail($commande['email'], $sujetMail, $messageMail);
@@ -183,12 +198,12 @@ require_once __DIR__ . '/../includes/header.php';
     <h1>Détail de la commande</h1>
 
     <?php if ($messageErreur): ?>
-        <p class="message-erreur">
+        <p class="detail-employe-message-erreur">
             <?= htmlspecialchars($messageErreur) ?>
         </p>
     <?php endif; ?>
 
-    <section>
+    <section class="detail-employe-section">
         <h2>Client</h2>
 
         <p>
@@ -207,7 +222,7 @@ require_once __DIR__ . '/../includes/header.php';
         </p>
     </section>
 
-    <section>
+    <section class="detail-employe-section">
         <h2>Commande</h2>
 
         <p>
@@ -264,10 +279,10 @@ require_once __DIR__ . '/../includes/header.php';
         </p>
     </section>
 
-    <section>
+    <section class="detail-employe-section">
         <h2>Modifier le statut</h2>
 
-        <form method="POST">
+        <form method="POST" class="detail-employe-form">
 
             <label for="statut_commande">
                 Nouveau statut
@@ -304,14 +319,14 @@ require_once __DIR__ . '/../includes/header.php';
 
             </select>
 
-            <button type="submit">
+            <button type="submit" class="detail-employe-bouton">
                 Mettre à jour
             </button>
 
         </form>
     </section>
 
-    <section>
+    <section class="detail-employe-section">
         <h2>Adresse de livraison</h2>
 
         <p>
@@ -322,7 +337,7 @@ require_once __DIR__ . '/../includes/header.php';
         </p>
     </section>
 
-    <section>
+    <section class="detail-employe-section">
         <h2>Conditions du menu</h2>
 
         <p>
@@ -330,9 +345,9 @@ require_once __DIR__ . '/../includes/header.php';
         </p>
     </section>
 
-    <div class="actions">
+    <div class="detail-employe-actions">
 
-        <a href="employe-commandes.php">
+        <a href="employe-commandes.php" class="detail-employe-lien">
             Retour aux commandes
         </a>
 
@@ -341,7 +356,7 @@ require_once __DIR__ . '/../includes/header.php';
             && $commande['statut_commande'] !== 'annulee'
         ): ?>
 
-            <a href="annuler-commande-employe.php?id=<?= $commande['id'] ?>">
+            <a href="annuler-commande-employe.php?id=<?= $commande['id'] ?>" class="detail-employe-lien danger">
                 Annuler la commande
             </a>
 

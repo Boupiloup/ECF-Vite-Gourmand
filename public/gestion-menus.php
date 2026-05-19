@@ -41,21 +41,21 @@ require_once __DIR__ . '/../includes/header.php';
 
     <h1>Gestion des menus</h1>
 
-    <p>
+    <p class="employe-menus-intro">
         Depuis cette page, vous pouvez gérer les menus proposés par Vite & Gourmand.
     </p>
 
-    <a href="employe-ajouter-menu.php">
+    <a href="employe-ajouter-menu.php" class="employe-menus-ajouter">
         Ajouter un menu
     </a>
 
     <?php if (empty($menus)): ?>
 
-        <p>Aucun menu enregistré pour le moment.</p>
+        <p class="employe-menus-vide">Aucun menu enregistré pour le moment.</p>
 
     <?php else: ?>
 
-        <table>
+        <table class="employe-menus-table">
             <thead>
                 <tr>
                     <th>Titre</th>
@@ -78,11 +78,11 @@ require_once __DIR__ . '/../includes/header.php';
                         <td><?= htmlspecialchars($menu['stock_disponible']) ?></td>
                         <td><?= $menu['actif'] ? 'Oui' : 'Non' ?></td>
                         <td>
-                            <a href="modifier-menu.php?id=<?= htmlspecialchars($menu['id']) ?>">
+                            <a href="modifier-menu.php?id=<?= htmlspecialchars($menu['id']) ?>" class="employe-menus-action">
                                 Modifier
                             </a>
 
-                            <a href="supprimer-menu.php?id=<?= htmlspecialchars($menu['id']) ?>">
+                            <a href="supprimer-menu.php?id=<?= htmlspecialchars($menu['id']) ?>" class="employe-menus-action-danger">
                                 Supprimer
                             </a>
                         </td>

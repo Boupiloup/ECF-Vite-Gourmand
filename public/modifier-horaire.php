@@ -64,15 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<main class="modifier-horaire-page">
+<main class="page-modifier-horaire">
 
     <h1>Modifier l'horaire du <?= htmlspecialchars($horaire['jour']) ?></h1>
 
     <?php if (!empty($messageErreur)) : ?>
-        <p><?= htmlspecialchars($messageErreur) ?></p>
+        <p class="message-erreur-horaire"><?= htmlspecialchars($messageErreur) ?></p>
     <?php endif; ?>
 
-    <form method="POST">
+    <form method="POST" class="formulaire-horaire">
 
         <input type="hidden" name="id" value="<?= htmlspecialchars($horaire['id']) ?>">
 
@@ -94,11 +94,11 @@ require_once __DIR__ . '/../includes/header.php';
             required
         >
 
-        <button type="submit">Modifier l'horaire</button>
+        <button type="submit" class="bouton-formulaire-horaire">Modifier l'horaire</button>
 
     </form>
 
-    <a href="gestion-horaires.php">Retour à la gestion des horaires</a>
+    <a href="gestion-horaires.php" class="bouton-retour-horaires">Retour à la gestion des horaires</a>
 
 </main>
 

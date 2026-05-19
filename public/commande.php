@@ -139,8 +139,8 @@ include_once __DIR__ . '/../includes/header.php';
 ?>
 
 <main>
-    <section class="commande-hero">
-        <div class="hero-content">
+    <section class="commande-page-hero">
+        <div class="commande-page-hero-content">
 
             <?php if ($menu): ?>
                 <h1>Votre commande</h1>
@@ -165,14 +165,14 @@ include_once __DIR__ . '/../includes/header.php';
     </section>
 
     <?php if ($menu): ?>
-        <section class="commande-section">
-            <div class="commande-container">
+        <section class="commande-page-section">
+            <div class="commande-page-container">
 
-                <div class="commande-gauche">
+                <div class="commande-page-gauche">
                     <h2>Informations de la prestation</h2>
 
-                    <form method="POST">
-                        <div class="form-group">
+                    <form method="POST" class="commande-page-form">
+                        <div class="commande-page-form-group">
                             <label for="nom">Nom</label>
                             <input 
                                 type="text" 
@@ -183,7 +183,7 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <div class="form-group">
+                        <div class="commande-page-form-group">
                             <label for="prenom">Prénom</label>
                             <input 
                                 type="text" 
@@ -194,7 +194,7 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <div class="form-group">
+                        <div class="commande-page-form-group">
                             <label for="email">Email</label>
                             <input 
                                 type="email" 
@@ -205,7 +205,7 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <div class="form-group">
+                        <div class="commande-page-form-group">
                             <label for="telephone">Téléphone</label>
                             <input 
                                 type="tel" 
@@ -216,7 +216,7 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <div class="form-group">
+                        <div class="commande-page-form-group">
                             <label for="personnes">Nombre de personnes</label>
                             <input 
                                 type="number" 
@@ -227,7 +227,7 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <div class="form-group">
+                        <div class="commande-page-form-group">
                             <label for="ville">Ville</label>
                             <input 
                                 type="text" 
@@ -238,7 +238,7 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <div class="form-group">
+                        <div class="commande-page-form-group">
                             <label for="code_postal">Code postal</label>
                             <input 
                                 type="text" 
@@ -249,7 +249,7 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <div class="form-group">
+                        <div class="commande-page-form-group">
                             <label for="adresse">Adresse de la prestation</label>
                             <input 
                                 type="text" 
@@ -260,7 +260,7 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <div class="form-group">
+                        <div class="commande-page-form-group">
                             <label for="heure">Heure souhaitée</label>
                             <input 
                                 type="time" 
@@ -270,7 +270,7 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <div class="form-group">
+                        <div class="commande-page-form-group">
                             <label for="date">Date de la prestation</label>
                             <input 
                                 type="date" 
@@ -280,15 +280,15 @@ include_once __DIR__ . '/../includes/header.php';
                             >
                         </div>
 
-                        <button type="submit" class="button_command">Passer la commande</button>
+                        <button type="submit" class="commande-page-button">Passer la commande</button>
 
                         <?php if ($message): ?>
-                            <p class="message"><?= htmlspecialchars($message) ?></p>
+                            <p class="commande-page-message"><?= htmlspecialchars($message) ?></p>
                         <?php endif; ?>
                     </form>
                 </div>
 
-                <div class="commande-droite">
+                <div class="commande-page-droite">
                     <h2>Résumé de la commande</h2>
 
                     <p>

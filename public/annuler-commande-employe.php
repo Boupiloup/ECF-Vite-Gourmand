@@ -68,11 +68,15 @@ require_once __DIR__ . '/../includes/header.php';
 <main class="annuler-commande-employe">
     <h1>Annuler la commande</h1>
 
-    <p>
+    <p class="texte-commande-annulation">
         Commande de <?= htmlspecialchars($commande['prenom'] . ' ' . $commande['nom']) ?>
     </p>
 
-    <form method="POST">
+    <?php if (!empty($messageErreur)) : ?>
+        <p class="message-erreur-annulation"><?= htmlspecialchars($messageErreur) ?></p>
+    <?php endif; ?>
+
+    <form method="POST" class="formulaire-annulation">
         <label for="mode_contact_annulation">Mode de contact utilisé</label>
 
         <select name="mode_contact_annulation" id="mode_contact_annulation" required>
@@ -85,10 +89,10 @@ require_once __DIR__ . '/../includes/header.php';
 
         <textarea name="motif_annulation" id="motif_annulation" required></textarea>
 
-        <button type="submit">Confirmer l'annulation</button>
+        <button type="submit" class="bouton-confirmer-annulation">Confirmer l'annulation</button>
     </form>
 
-    <a href="detail-commande-employe.php?id=<?= $commande_id ?>">Retour</a>
+    <a href="detail-commande-employe.php?id=<?= $commande_id ?>" class="bouton-retour-annulation">Retour</a>
 </main>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

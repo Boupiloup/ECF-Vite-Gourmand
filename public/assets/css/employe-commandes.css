@@ -1,0 +1,133 @@
+/* employe-commandes.css */
+
+.employe-commandes {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.employe-commandes h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 30px;
+}
+
+.employe-commandes-filtres {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    justify-content: center;
+    max-width: none;
+    margin: 0 auto 30px auto;
+    padding: 20px;
+    background-color: #FFECCE;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.employe-commandes-filtre label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.employe-commandes-filtre input,
+.employe-commandes-filtre select {
+    width: 210px;
+    padding: 9px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.employe-commandes-bouton,
+.employe-commandes-lien,
+.employe-commandes-voir {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.employe-commandes-bouton {
+    width: 180px;
+}
+
+.employe-commandes-bouton:hover,
+.employe-commandes-lien:hover,
+.employe-commandes-voir:hover {
+    background-color: #FFB41D;
+}
+
+.employe-commandes-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fffaf0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.employe-commandes-table th,
+.employe-commandes-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #f3d69f;
+}
+
+.employe-commandes-table th {
+    background-color: #FFECCE;
+    color: #8C5517;
+}
+
+.employe-commandes-table tr:hover {
+    background-color: #fff3d8;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .employe-commandes-filtres {
+        display: block;
+    }
+
+    .employe-commandes-filtre {
+        margin-bottom: 15px;
+    }
+
+    .employe-commandes-filtre input,
+    .employe-commandes-filtre select,
+    .employe-commandes-bouton,
+    .employe-commandes-lien {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .employe-commandes-table,
+    .employe-commandes-table thead,
+    .employe-commandes-table tbody,
+    .employe-commandes-table tr,
+    .employe-commandes-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .employe-commandes-table thead {
+        display: none;
+    }
+
+    .employe-commandes-table tr {
+        background-color: #fffaf0;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 12px;
+        border: 1px solid #f3d69f;
+    }
+
+    .employe-commandes-table td {
+        text-align: left;
+    }
+}

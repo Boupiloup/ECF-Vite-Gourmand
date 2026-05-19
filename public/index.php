@@ -125,57 +125,57 @@ $avisClients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     </section>
 
-    <!-- AVIS CLIENTS -->
-    <section class="reviews">
+<!-- AVIS CLIENTS -->
+<section class="reviews">
 
-        <h2>Avis clients</h2>
+    <h2>Avis clients</h2>
 
-        <div class="review-grid">
+    <div class="review-grid">
 
-            <?php if (empty($avisClients)) : ?>
+        <?php if (empty($avisClients)) : ?>
 
-                <p>Aucun avis client validé pour le moment.</p>
+            <p>Aucun avis client validé pour le moment.</p>
 
-            <?php else : ?>
+        <?php else : ?>
 
-                <?php foreach ($avisClients as $avis) : ?>
+            <?php foreach ($avisClients as $avis) : ?>
 
-                    <article class="review-card">
+                <article class="review-card">
 
-                        <div class="review-header">
+                    <div class="review-header">
 
-                            <img
-                                src="assets/img/image/photo-de-profil/homme-1.jpg"
-                                alt="Photo de profil de <?= htmlspecialchars($avis['prenom'] . ' ' . $avis['nom']) ?>"
-                            >
+                        <img
+                            src="assets/img/image/photo-de-profil/homme-1.jpg"
+                            alt="Photo de profil de <?= htmlspecialchars($avis['prenom'] . ' ' . $avis['nom']) ?>"
+                        >
 
-                            <div class="review-meta">
+                        <div class="review-meta">
 
-                                <div class="review-stars">
-                                    <?= str_repeat('★', (int) $avis['note']) ?>
-                                </div>
-
-                                <h3>
-                                    <?= htmlspecialchars($avis['prenom'] . ' ' . $avis['nom']) ?>
-                                </h3>
-
+                            <div class="review-stars">
+                                <?= str_repeat('★', (int) $avis['note']) ?>
                             </div>
+
+                            <h3>
+                                <?= htmlspecialchars($avis['prenom'] . ' ' . $avis['nom']) ?>
+                            </h3>
 
                         </div>
 
-                        <p>
-                            <?= htmlspecialchars($avis['commentaire']) ?>
-                        </p>
+                    </div>
 
-                    </article>
+                    <p>
+                        <?= htmlspecialchars($avis['commentaire']) ?>
+                    </p>
 
-                <?php endforeach; ?>
+                </article>
 
-            <?php endif; ?>
+            <?php endforeach; ?>
 
-        </div>
+        <?php endif; ?>
 
-    </section>
+    </div>
+
+</section>
 
 </main>
 

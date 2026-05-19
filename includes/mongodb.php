@@ -6,4 +6,4 @@ use MongoDB\Client;
 $mongoClient = new Client("mongodb://localhost:27017");
 
 $mongoDatabase = $mongoClient->vite_gourmand_nosql;
-?>
+

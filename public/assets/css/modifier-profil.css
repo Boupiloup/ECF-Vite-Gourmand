@@ -1,0 +1,98 @@
+/* modifier-profil.css */
+
+.modifier-profil-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.modifier-profil-container {
+    padding: 30px;
+    border-radius: 18px;
+}
+
+.modifier-profil-title {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 25px;
+}
+
+.modifier-profil-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.success-message {
+    background-color: #d4edda;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.btn-submit-profil,
+.btn-retour-dashboard {
+    padding: 12px 20px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border: none;
+    border-radius: 999px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.btn-submit-profil:hover,
+.btn-retour-dashboard:hover {
+    background-color: #FFB41D;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .modifier-profil-container {
+        padding: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-submit-profil,
+    .btn-retour-dashboard {
+        width: 100%;
+    }
+}

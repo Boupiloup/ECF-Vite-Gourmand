@@ -1,0 +1,100 @@
+/* admin-stats.css */
+
+.admin-stats {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.admin-stats h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 25px;
+}
+
+.admin-stats-bouton {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 25px auto;
+    padding: 10px 18px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.admin-stats-bouton:hover {
+    background-color: #FFB41D;
+}
+
+.admin-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fffaf0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    margin-bottom: 35px;
+}
+
+.admin-stats-table th,
+.admin-stats-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #f3d69f;
+}
+
+.admin-stats-table th {
+    background-color: #FFECCE;
+    color: #8C5517;
+}
+
+.admin-stats-sous-titre {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 20px;
+}
+
+.admin-stats-graphique {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #FFECCE;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .admin-stats {
+        padding: 25px 15px;
+    }
+
+    .admin-stats-table,
+    .admin-stats-table thead,
+    .admin-stats-table tbody,
+    .admin-stats-table tr,
+    .admin-stats-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .admin-stats-table thead {
+        display: none;
+    }
+
+    .admin-stats-table tr {
+        background-color: #fffaf0;
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #f3d69f;
+        border-radius: 12px;
+    }
+
+    .admin-stats-table td {
+        text-align: left;
+    }
+
+    .admin-stats-graphique {
+        padding: 15px;
+    }
+}

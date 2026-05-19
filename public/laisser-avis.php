@@ -21,9 +21,14 @@ if ($commande_id <= 0) {
 /* Vérifie que la commande appartient bien à l'utilisateur
    et qu'elle est terminée */
 $sql = "
-    SELECT id, statut_commande
+    SELECT 
+        commande.id,
+        commande.statut_commande,
+        menu.titre AS menu_titre
     FROM commande
-    WHERE id = ? AND utilisateur_id = ?
+    INNER JOIN menu ON commande.menu_id = menu.id
+    WHERE commande.id = ? 
+    AND commande.utilisateur_id = ?
 ";
 
 $stmt = $pdo->prepare($sql);
@@ -96,6 +101,7 @@ require_once __DIR__ . '/../includes/header.php';
 <main class="laisser-avis-page">
 
     <h1>Laisser un avis</h1>
+    <h2 style="text-align: center; color: #8C5517;"><?= htmlspecialchars($commande['menu_titre']) ?></h2>
 
     <?php if (!empty($messageErreur)) : ?>
         <p><?= htmlspecialchars($messageErreur) ?></p>

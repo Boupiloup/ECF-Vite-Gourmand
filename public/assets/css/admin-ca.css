@@ -1,0 +1,84 @@
+/* admin-ca.css */
+
+.admin-ca {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.admin-ca h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 25px;
+}
+
+.admin-ca-form {
+    max-width: none;
+    margin: 0 auto 30px auto;
+    padding: 25px;
+    background-color: #FFECCE;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.admin-ca-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.admin-ca-form select,
+.admin-ca-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+}
+
+.admin-ca-bouton {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFCD70;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.admin-ca-bouton:hover {
+    background-color: #FFB41D;
+}
+
+.admin-ca-resultat {
+    background-color: #FFECCE;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.admin-ca-resultat h2 {
+    color: #8C5517;
+    margin-bottom: 15px;
+}
+
+.admin-ca-texte {
+    font-size: 1.2rem;
+}
+
+.admin-ca-texte strong {
+    color: #8C5517;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .admin-ca {
+        padding: 25px 15px;
+    }
+
+    .admin-ca-form,
+    .admin-ca-resultat {
+        padding: 20px;
+    }
+}

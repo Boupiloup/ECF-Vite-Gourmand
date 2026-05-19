@@ -34,9 +34,9 @@ require_once __DIR__ . '/../includes/header.php';
 <main class="admin-stats">
     <h1>Statistiques des commandes par menu</h1>
 
-    <a href="admin-generer-stats.php">Mettre à jour les statistiques</a>
+    <a href="admin-generer-stats.php" class="admin-stats-bouton">Mettre à jour les statistiques</a>
 
-    <table>
+    <table class="admin-stats-table">
         <thead>
             <tr>
                 <th>Menu</th>
@@ -58,9 +58,11 @@ require_once __DIR__ . '/../includes/header.php';
         </tbody>
     </table>
 
-    <h2>Comparaison des menus</h2>
+    <h2 class="admin-stats-sous-titre">Comparaison des menus</h2>
 
-    <canvas id="graphiqueMenus"></canvas>
+    <div class="admin-stats-graphique">
+        <canvas id="graphiqueMenus"></canvas>
+    </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

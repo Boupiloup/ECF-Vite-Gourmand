@@ -58,15 +58,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<main class="ajouter-plat-page">
+<main class="page-ajouter-plat">
 
     <h1>Ajouter un plat</h1>
 
     <?php if (!empty($messageErreur)) : ?>
-        <p><?= htmlspecialchars($messageErreur) ?></p>
+        <p class="message-erreur-plat"><?= htmlspecialchars($messageErreur) ?></p>
     <?php endif; ?>
 
-    <form method="POST">
+    <form method="POST" class="formulaire-plat">
 
         <label for="nom">Nom du plat</label>
         <input type="text" id="nom" name="nom" required>
@@ -82,16 +82,16 @@ require_once __DIR__ . '/../includes/header.php';
             <option value="dessert">Dessert</option>
         </select>
 
-        <label>
+        <label class="choix-plat-actif">
             <input type="checkbox" name="actif" checked>
             Plat actif
         </label>
 
-        <button type="submit">Ajouter le plat</button>
+        <button type="submit" class="bouton-formulaire-plat">Ajouter le plat</button>
 
     </form>
 
-    <a href="gestion-plats.php">Retour à la gestion des plats</a>
+    <a href="gestion-plats.php" class="bouton-retour-plats">Retour à la gestion des plats</a>
 
 </main>
 

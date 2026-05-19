@@ -27,16 +27,36 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="assets/css/vuedetail.css">
     <link rel="stylesheet" href="assets/css/mes-commandes.css">
     <link rel="stylesheet" href="assets/css/detail-commande.css">
-
+    <link rel="stylesheet" href="assets/css/pages-infos.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/user-dashboard.css">
+    <link rel="stylesheet" href="assets/css/employe-dashboard.css">
+    <link rel="stylesheet" href="assets/css/employe-commandes.css">
+    <link rel="stylesheet" href="assets/css/detail-commande-employe.css">
+    <link rel="stylesheet" href="assets/css/employe-menus.css">
+    <link rel="stylesheet" href="assets/css/employe-plats.css">
+    <link rel="stylesheet" href="assets/css/employe-horaires-avis.css">
+    <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+    <link rel="stylesheet" href="assets/css/admin-employes.css">
+    <link rel="stylesheet" href="assets/css/admin-stats.css">
+    <link rel="stylesheet" href="assets/css/admin-ca.css">
+    <link rel="stylesheet" href="assets/css/annuler-commande-employe.css">
+    <link rel="stylesheet" href="assets/css/modifier-profil.css">
+    <link rel="stylesheet" href="assets/css/suivi-commande.css">
+    <link rel="stylesheet" href="assets/css/laisser-avis.css">
+    <link rel="stylesheet" href="assets/css/commande.css">
 </head>
 
 <body>
     <header class="site-header">
         <div class="header-container">
 
+            <button class="burger-button" id="burgerButton">
+                ☰
+            </button>
             <img class="site-logo" src="assets/img/logo/Logo_ViteEtGourmand.png" alt="Logo Vite &amp; Gourmand">
 
-            <nav class="site-nav">
+            <nav class="site-nav" id="site-nav">
                 <ul class="site-nav-list">
                     <li><a href="index.php">Accueil</a></li>
                     <li><a href="menus.php">Menus</a></li>

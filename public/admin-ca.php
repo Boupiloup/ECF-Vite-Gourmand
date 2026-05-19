@@ -73,7 +73,7 @@ require_once __DIR__ . '/../includes/header.php';
 <main class="admin-ca">
     <h1>Chiffre d'affaires par menu</h1>
 
-    <form method="GET">
+    <form method="GET" class="admin-ca-form">
         <label for="menu_id">Menu</label>
 
         <select name="menu_id" id="menu_id">
@@ -93,15 +93,15 @@ require_once __DIR__ . '/../includes/header.php';
         <label for="date_fin">Date de fin</label>
         <input type="date" name="date_fin" id="date_fin" value="<?= htmlspecialchars($dateFin) ?>">
 
-        <button type="submit">Filtrer</button>
+        <button type="submit" class="admin-ca-bouton">Filtrer</button>
     </form>
 
     <!-- Si un calcul a été effectué, on affiche le chiffre d'affaires trouvé -->
     <?php if ($chiffreAffaires !== null): ?>
-        <section>
+        <section class="admin-ca-resultat">
             <h2>Résultat</h2>
 
-            <p>
+            <p class="admin-ca-texte">
                 Chiffre d'affaires :
                 <strong>
                     <?= number_format((float) $chiffreAffaires, 2, ',', ' ') ?> €

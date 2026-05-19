@@ -77,8 +77,8 @@ require_once __DIR__ . '/../includes/header.php';
 <main class="employe-commandes">
     <h1>Gestion des commandes</h1>
 
-    <form method="GET" class="filtres-commandes">
-        <div>
+    <form method="GET" class="employe-commandes-filtres">
+        <div class="employe-commandes-filtre">
             <label for="statut">Filtrer par statut</label>
             <select name="statut" id="statut">
                 <option value="">Tous les statuts</option>
@@ -91,7 +91,7 @@ require_once __DIR__ . '/../includes/header.php';
             </select>
         </div>
 
-        <div>
+        <div class="employe-commandes-filtre">
             <label for="client">Rechercher un client</label>
             <input 
                 type="text" 
@@ -102,12 +102,12 @@ require_once __DIR__ . '/../includes/header.php';
             >
         </div>
 
-        <button type="submit">Filtrer</button>
+        <button type="submit" class="employe-commandes-bouton">Filtrer</button>
 
-        <a href="employe-commandes.php">Réinitialiser</a>
+        <a href="employe-commandes.php" class="employe-commandes-lien">Réinitialiser</a>
     </form>
 
-    <table>
+    <table class="employe-commandes-table">
         <thead>
             <tr>
                 <th>Client</th>
@@ -143,7 +143,7 @@ require_once __DIR__ . '/../includes/header.php';
                         <td><?= htmlspecialchars($commande['prix_total']) ?> €</td>
 
                         <td>
-                            <a href="detail-commande-employe.php?id=<?= $commande['id'] ?>">Voir</a>
+                            <a href="detail-commande-employe.php?id=<?= $commande['id'] ?>" class="employe-commandes-voir">Voir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

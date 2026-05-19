@@ -42,11 +42,6 @@ if ($_SESSION['utilisateur_role'] != 3) {
                 <p>Suivre l'état d'avancement de vos commandes.</p>
             </a>
 
-            <a href="mes-avis.php" class="dashboard-card">
-                <h2>Mes avis</h2>
-                <p>Laisser une note et un commentaire après une commande terminée.</p>
-            </a>
-
         </div>
 
     </section>

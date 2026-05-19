@@ -153,10 +153,10 @@ require_once __DIR__ . '/../includes/header.php';
     <h1>Modifier un menu</h1>
 
     <?php if (!empty($messageErreur)) : ?>
-        <p><?= htmlspecialchars($messageErreur) ?></p>
+        <p class="menu-form-erreur"><?= htmlspecialchars($messageErreur) ?></p>
     <?php endif; ?>
 
-    <form method="POST">
+    <form method="POST" class="menu-form">
 
         <input type="hidden" name="id" value="<?= htmlspecialchars($menu['id']) ?>">
 
@@ -242,7 +242,7 @@ require_once __DIR__ . '/../includes/header.php';
             required
         >
 
-        <fieldset>
+        <fieldset class="menu-form-fieldset">
             <legend>Plats associés au menu</legend>
 
             <?php foreach ($plats as $plat) : ?>
@@ -259,7 +259,7 @@ require_once __DIR__ . '/../includes/header.php';
             <?php endforeach; ?>
         </fieldset>
 
-        <label>
+        <label class="menu-form-checkbox">
             <input
                 type="checkbox"
                 name="actif"
@@ -268,11 +268,11 @@ require_once __DIR__ . '/../includes/header.php';
             Menu actif
         </label>
 
-        <button type="submit">Modifier le menu</button>
+        <button type="submit" class="menu-form-bouton">Modifier le menu</button>
 
     </form>
 
-    <a href="gestion-menus.php">Retour à la gestion des menus</a>
+    <a href="gestion-menus.php" class="menu-form-retour">Retour à la gestion des menus</a>
 
 </main>
 

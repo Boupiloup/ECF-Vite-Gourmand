@@ -74,34 +74,34 @@ require_once __DIR__ . '/../includes/header.php';
 <main class="creer-employe">
     <h1>Créer un compte employé</h1>
     <?php if ($message): ?>
-        <p class="error-message"><?php echo htmlspecialchars($message); ?></p>
+        <p class="creer-employe-erreur"><?php echo htmlspecialchars($message); ?></p>
     <?php endif; ?>
 
-    <form method="POST">
-        <div>
+    <form method="POST" class="creer-employe-form">
+        <div class="creer-employe-groupe">
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" required>
         </div>
-        <div>
+        <div class="creer-employe-groupe">
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom" name="prenom" required>
         </div>
-        <div>
+        <div class="creer-employe-groupe">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
         </div>
-        <div>
+        <div class="creer-employe-groupe">
             <label for="telephone">Téléphone</label>
             <input type="text" id="telephone" name="telephone" required>
         </div>
-        <div>
+        <div class="creer-employe-groupe">
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Créer le compte</button>
+        <button type="submit" class="creer-employe-bouton">Créer le compte</button>
     </form>
 
-    <a href="gestion-employes.php">Retour à la gestion des employés</a>
+    <a href="gestion-employes.php" class="creer-employe-retour">Retour à la gestion des employés</a>
 </main>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

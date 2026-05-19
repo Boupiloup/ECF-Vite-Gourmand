@@ -76,15 +76,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<main class="modifier-plat-page">
+<main class="page-modifier-plat">
 
     <h1>Modifier un plat</h1>
 
     <?php if (!empty($messageErreur)) : ?>
-        <p><?= htmlspecialchars($messageErreur) ?></p>
+        <p class="message-erreur-plat"><?= htmlspecialchars($messageErreur) ?></p>
     <?php endif; ?>
 
-    <form method="POST">
+    <form method="POST" class="formulaire-plat">
 
         <input type="hidden" name="id" value="<?= htmlspecialchars($plat['id']) ?>">
 
@@ -121,7 +121,7 @@ require_once __DIR__ . '/../includes/header.php';
             </option>
         </select>
 
-        <label>
+        <label class="choix-plat-actif">
             <input
                 type="checkbox"
                 name="actif"
@@ -130,11 +130,11 @@ require_once __DIR__ . '/../includes/header.php';
             Plat actif
         </label>
 
-        <button type="submit">Modifier le plat</button>
+        <button type="submit" class="bouton-formulaire-plat">Modifier le plat</button>
 
     </form>
 
-    <a href="gestion-plats.php">Retour à la gestion des plats</a>
+    <a href="gestion-plats.php" class="bouton-retour-plats">Retour à la gestion des plats</a>
 
 </main>
 

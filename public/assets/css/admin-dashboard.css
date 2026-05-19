@@ -1,0 +1,63 @@
+/* admin-dashboard.css */
+
+.admin-dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.admin-dashboard h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 30px;
+}
+
+.admin-dashboard-section {
+    background-color: #FFECCE;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.admin-dashboard-section h2 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 20px;
+}
+
+.admin-dashboard-liens {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.admin-dashboard-lien {
+    display: block;
+    padding: 15px;
+    background-color: #FFCD70;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.admin-dashboard-lien:hover {
+    background-color: #FFB41D;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .admin-dashboard {
+        padding: 25px 15px;
+    }
+
+    .admin-dashboard-liens {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-dashboard-section {
+        padding: 20px;
+    }
+}

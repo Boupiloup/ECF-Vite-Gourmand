@@ -1,0 +1,162 @@
+/* admin-employes.css */
+
+.gestion-employes,
+.creer-employe {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.gestion-employes h1,
+.creer-employe h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 25px;
+}
+
+.gestion-employes-ajouter,
+.creer-employe-retour {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 25px auto;
+    padding: 10px 18px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.gestion-employes-ajouter:hover,
+.creer-employe-retour:hover {
+    background-color: #FFB41D;
+}
+
+.gestion-employes-vide {
+    text-align: center;
+}
+
+.gestion-employes-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fffaf0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.gestion-employes-table th,
+.gestion-employes-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #f3d69f;
+}
+
+.gestion-employes-table th {
+    background-color: #FFECCE;
+    color: #8C5517;
+}
+
+.gestion-employes-desactiver {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #f3a19b;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.gestion-employes-desactiver:hover {
+    background-color: #e46f66;
+}
+
+.gestion-employes-inactif {
+    color: #8C5517;
+    font-weight: bold;
+}
+
+.creer-employe-form {
+    max-width: 650px;
+    margin: 0 auto 25px auto;
+    padding: 25px;
+    background-color: #FFECCE;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.creer-employe-groupe {
+    margin-bottom: 15px;
+}
+
+.creer-employe-groupe label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.creer-employe-groupe input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+}
+
+.creer-employe-bouton {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFCD70;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.creer-employe-bouton:hover {
+    background-color: #FFB41D;
+}
+
+.creer-employe-erreur {
+    max-width: 650px;
+    margin: 0 auto 20px auto;
+    padding: 12px;
+    background-color: #f8d7da;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .gestion-employes,
+    .creer-employe {
+        padding: 25px 15px;
+    }
+
+    .gestion-employes-table,
+    .gestion-employes-table thead,
+    .gestion-employes-table tbody,
+    .gestion-employes-table tr,
+    .gestion-employes-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .gestion-employes-table thead {
+        display: none;
+    }
+
+    .gestion-employes-table tr {
+        background-color: #fffaf0;
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #f3d69f;
+        border-radius: 12px;
+    }
+
+    .gestion-employes-table td {
+        text-align: left;
+    }
+
+    .creer-employe-form {
+        padding: 20px;
+    }
+}

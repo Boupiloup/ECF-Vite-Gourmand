@@ -35,19 +35,19 @@ $plats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<main class="gestion-plats-page">
+<main class="page-gestion-plats">
 
     <h1>Gestion des plats</h1>
 
-    <a href="ajouter-plat.php">Ajouter un plat</a>
+    <a href="ajouter-plat.php" class="bouton-ajouter-plat">Ajouter un plat</a>
 
     <?php if (empty($plats)): ?>
 
-        <p>Aucun plat enregistré pour le moment.</p>
+        <p class="message-plats-vide">Aucun plat enregistré pour le moment.</p>
 
     <?php else: ?>
 
-        <table>
+        <table class="tableau-plats">
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -66,11 +66,11 @@ require_once __DIR__ . '/../includes/header.php';
                         <td><?= htmlspecialchars($plat['type_plat']) ?></td>
                         <td><?= $plat['actif'] ? 'Oui' : 'Non' ?></td>
                         <td>
-                            <a href="modifier-plat.php?id=<?= htmlspecialchars($plat['id']) ?>">
+                            <a href="modifier-plat.php?id=<?= htmlspecialchars($plat['id']) ?>" class="bouton-modifier-plat">
                                 Modifier
                             </a>
 
-                            <a href="supprimer-plat.php?id=<?= htmlspecialchars($plat['id']) ?>">
+                            <a href="supprimer-plat.php?id=<?= htmlspecialchars($plat['id']) ?>" class="bouton-supprimer-plat">
                                 Supprimer
                             </a>
                         </td>

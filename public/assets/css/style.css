@@ -1,5 +1,10 @@
 /*==  GLOBAL == */
 
+* {
+    box-sizing: border-box;
+    /* inclure les bordures et les marges dans la taille totale des éléments */
+}
+
 body {
     font-family: "Inter", sans-serif;
     background-color: #F7F2E8;

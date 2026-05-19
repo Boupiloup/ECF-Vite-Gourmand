@@ -37,8 +37,10 @@ $avisClients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<main>
-    <table>
+<main class="page-avis-employe">
+    <h1>Gestion des avis clients</h1>
+
+    <table class="tableau-avis-employe">
         <thead>
             <tr>
                 <th>Client</th>
@@ -58,8 +60,10 @@ require_once __DIR__ . '/../includes/header.php';
                     <td><?php echo htmlspecialchars($avis['date_avis'])?></td>
                     <td><?php echo htmlspecialchars($avis['valide'] ? 'Validé' : 'Non validé') ?></td>
                     <td><?php  if (!$avis['valide']) : ?>
-                            <a href="valider-avis.php?id=<?= $avis['id'] ?>">Valider</a>
-                            <a href="refuser-avis.php?id=<?= $avis['id'] ?>">Refuser</a>
+                            <a href="valider-avis.php?id=<?= $avis['id'] ?>" class="bouton-valider-avis">Valider</a>
+                            <a href="refuser-avis.php?id=<?= $avis['id'] ?>" class="bouton-refuser-avis">Refuser</a>
+                        <?php else : ?>
+                            <span class="texte-avis-sans-action">Aucune action</span>
                         <?php endif; ?>
                     </td>
                 </tr>

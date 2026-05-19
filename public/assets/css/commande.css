@@ -1,0 +1,109 @@
+.commande-page-hero {
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.commande-page-hero h1 {
+    color: #8C5517;
+    margin-bottom: 15px;
+}
+
+.commande-page-hero h2 {
+    margin-bottom: 20px;
+}
+
+.commande-page-section {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.commande-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.commande-page-gauche,
+.commande-page-droite {
+    background-color: #FFECCE;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.commande-page-gauche h2,
+.commande-page-droite h2 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 20px;
+}
+
+.commande-page-form {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.commande-page-form-group {
+    margin-bottom: 15px;
+}
+
+.commande-page-form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.commande-page-form-group input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.commande-page-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #FFCD70;
+    border: 1px solid #c98725;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.commande-page-button:hover {
+    background-color: #FFB41D;
+}
+
+.commande-page-droite p {
+    margin: 16px 0;
+    line-height: 1.6;
+}
+
+.commande-page-droite strong {
+    color: #8C5517;
+}
+
+.commande-page-message {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .commande-page-container {
+        grid-template-columns: 1fr;
+    }
+
+    .commande-page-section {
+        padding: 15px;
+    }
+}

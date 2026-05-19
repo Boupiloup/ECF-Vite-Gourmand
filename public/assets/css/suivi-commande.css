@@ -1,0 +1,71 @@
+.suivi-commande-page {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.suivi-commande-page h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 30px;
+}
+
+
+
+.suivi-commande-card {
+    max-width: 600px;
+    margin: 0 auto 25px auto;
+    padding: 22px 35px;
+    background-color: #FFECCE;
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.suivi-commande-card h2 {
+    color: #8C5517;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.suivi-commande-card p {
+    width: 350px;
+    margin: 10px auto;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.suivi-commande-card strong {
+    color: #8C5517;
+}
+
+.suivi-commande-card a {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0 auto;
+    padding: 10px 18px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: bold;
+}
+
+.suivi-commande-card a:hover {
+    background-color: #FFB41D;
+}
+
+@media screen and (max-width: 768px) {
+    .suivi-commande-page {
+        padding: 20px 15px;
+    }
+
+    .suivi-commande-card {
+        max-width: 100%;
+        padding: 18px;
+    }
+
+    .suivi-commande-card h2 {
+        font-size: 1.3rem;
+    }
+}

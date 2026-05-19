@@ -40,6 +40,7 @@ function chargerMenus() {
             // Si une erreur arrive, je l'affiche dans la console
             console.error('Erreur lors du chargement des menus :', error);
         });
+        
 }
 
 function afficherTousLesMenus(menus) {

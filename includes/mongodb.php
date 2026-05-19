@@ -1,9 +1,14 @@
-<?php 
+<?php
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use MongoDB\Client;
 
-$mongoClient = new Client("mongodb://localhost:27017");
+/* Lecture du fichier .env */
+$env = parse_ini_file(__DIR__ . '/../.env');
 
-$mongoDatabase = $mongoClient->vite_gourmand_nosql;
+/* Connexion à MongoDB */
+$mongoClient = new Client($env['MONGODB_URI']);
 
+/* Sélection de la base MongoDB */
+$mongoDatabase = $mongoClient->{$env['MONGODB_DATABASE']};

@@ -7,6 +7,9 @@ require_once __DIR__ . '/../lib/phpmailer/src/Exception.php';
 require_once __DIR__ . '/../lib/phpmailer/src/PHPMailer.php';
 require_once __DIR__ . '/../lib/phpmailer/src/SMTP.php';
 
+/* Lecture du fichier .env */
+$env = parse_ini_file(__DIR__ . '/../.env');
+
 function templateEmail($message)
 {
     return "
@@ -34,12 +37,21 @@ function templateEmail($message)
 
 function envoyerEmail($destinataire, $sujet, $message)
 {
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host = 'localhost';
-    $mail->Port = 1025;
+    global $env;
 
-    $mail->setFrom('noreply@viteetgourmand.fr', 'Vite et Gourmand');
+    $mail = new PHPMailer(true);
+
+    $mail->isSMTP();
+    $mail->Host = $env['MAIL_HOST'];
+    $mail->Port = (int) $env['MAIL_PORT'];
+
+    if (!empty($env['MAIL_USERNAME'])) {
+        $mail->SMTPAuth = true;
+        $mail->Username = $env['MAIL_USERNAME'];
+        $mail->Password = $env['MAIL_PASSWORD'];
+    }
+
+    $mail->setFrom($env['MAIL_FROM'], $env['MAIL_FROM_NAME']);
     $mail->addAddress($destinataire);
 
     $mail->isHTML(true);

@@ -1,0 +1,73 @@
+.laisser-avis-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.laisser-avis-page h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 30px;
+}
+
+.laisser-avis-page form {
+    background-color: #FFECCE;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.laisser-avis-page label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #8C5517;
+}
+
+.laisser-avis-page select,
+.laisser-avis-page textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.laisser-avis-page textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.laisser-avis-page button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFCD70;
+    border: none;
+    border-radius: 999px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.laisser-avis-page button:hover {
+    background-color: #FFB41D;
+}
+
+.laisser-avis-page p {
+    text-align: center;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .laisser-avis-page {
+        padding: 20px 15px;
+    }
+
+    .laisser-avis-page form {
+        padding: 20px;
+    }
+}
+
+

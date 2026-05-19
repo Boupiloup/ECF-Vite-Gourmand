@@ -1,0 +1,182 @@
+/* employe-horaires-avis.css */
+
+.gestion-horaires-page,
+.modifier-horaire-page,
+.employe-avis-page {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.gestion-horaires-page h1,
+.modifier-horaire-page h1,
+.employe-avis-page h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 25px;
+}
+
+.gestion-horaires-vide {
+    text-align: center;
+}
+
+.gestion-horaires-table,
+.employe-avis-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fffaf0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.gestion-horaires-table th,
+.gestion-horaires-table td,
+.employe-avis-table th,
+.employe-avis-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #f3d69f;
+}
+
+.gestion-horaires-table th,
+.employe-avis-table th {
+    background-color: #FFECCE;
+    color: #8C5517;
+}
+
+.gestion-horaires-action,
+.employe-avis-action,
+.employe-avis-action-refuser,
+.horaire-form-retour {
+    display: inline-block;
+    margin: 4px;
+    padding: 8px 12px;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.gestion-horaires-action,
+.employe-avis-action,
+.horaire-form-retour {
+    background-color: #FFCD70;
+}
+
+.gestion-horaires-action:hover,
+.employe-avis-action:hover,
+.horaire-form-retour:hover {
+    background-color: #FFB41D;
+}
+
+.employe-avis-action-refuser {
+    background-color: #f3a19b;
+}
+
+.employe-avis-action-refuser:hover {
+    background-color: #e46f66;
+}
+
+.employe-avis-aucune-action {
+    color: #8C5517;
+    font-weight: bold;
+}
+
+.horaire-form {
+    max-width: 600px;
+    margin: 0 auto 25px auto;
+    padding: 25px;
+    background-color: #FFECCE;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.horaire-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.horaire-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+}
+
+.horaire-form-bouton {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFCD70;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.horaire-form-bouton:hover {
+    background-color: #FFB41D;
+}
+
+.horaire-form-retour {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 25px auto;
+}
+
+.horaire-form-erreur {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    padding: 12px;
+    background-color: #f8d7da;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+
+    .gestion-horaires-page,
+    .modifier-horaire-page,
+    .employe-avis-page {
+        padding: 25px 15px;
+    }
+
+    .gestion-horaires-table,
+    .gestion-horaires-table thead,
+    .gestion-horaires-table tbody,
+    .gestion-horaires-table tr,
+    .gestion-horaires-table td,
+    .employe-avis-table,
+    .employe-avis-table thead,
+    .employe-avis-table tbody,
+    .employe-avis-table tr,
+    .employe-avis-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .gestion-horaires-table thead,
+    .employe-avis-table thead {
+        display: none;
+    }
+
+    .gestion-horaires-table tr,
+    .employe-avis-table tr {
+        background-color: #fffaf0;
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #f3d69f;
+        border-radius: 12px;
+    }
+
+    .gestion-horaires-table td,
+    .employe-avis-table td {
+        text-align: left;
+    }
+
+    .horaire-form {
+        padding: 20px;
+    }
+}

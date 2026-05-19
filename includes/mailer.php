@@ -1,0 +1,52 @@
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once __DIR__ . '/../lib/phpmailer/src/Exception.php';
+require_once __DIR__ . '/../lib/phpmailer/src/PHPMailer.php';
+require_once __DIR__ . '/../lib/phpmailer/src/SMTP.php';
+
+function templateEmail($message)
+{
+    return "
+    <div style='background-color:#f6f1e8; padding:30px; font-family:Arial, sans-serif; color:#333;'>
+        <div style='max-width:600px; margin:0 auto; background-color:#ffffff; padding:30px; border-radius:10px;'>
+            
+            <h1 style='margin-top:0; color:#8b5e34; text-align:center;'>
+                Vite & Gourmand
+            </h1>
+
+            <div style='font-size:16px; line-height:1.6;'>
+                $message
+            </div>
+
+            <hr style='border:none; border-top:1px solid #ddd; margin:25px 0;'>
+
+            <p style='font-size:13px; color:#777; text-align:center;'>
+                Ceci est un email automatique, merci de ne pas y répondre directement.
+            </p>
+
+        </div>
+    </div>
+    ";
+}
+
+function envoyerEmail($destinataire, $sujet, $message)
+{
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host = 'localhost';
+    $mail->Port = 1025;
+
+    $mail->setFrom('noreply@viteetgourmand.fr', 'Vite et Gourmand');
+    $mail->addAddress($destinataire);
+
+    $mail->isHTML(true);
+    $mail->CharSet = 'UTF-8';
+    $mail->Subject = $sujet;
+    $mail->Body = templateEmail($message);
+    $mail->AltBody = strip_tags($message);
+
+    return $mail->send();
+}

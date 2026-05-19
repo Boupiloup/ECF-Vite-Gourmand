@@ -1,0 +1,185 @@
+/* employe-plats.css */
+
+.page-gestion-plats,
+.page-modifier-plat,
+.page-ajouter-plat {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.page-gestion-plats h1,
+.page-modifier-plat h1,
+.page-ajouter-plat h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 25px;
+}
+
+.bouton-ajouter-plat,
+.bouton-retour-plats {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 25px auto;
+    padding: 10px 18px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.bouton-ajouter-plat:hover,
+.bouton-retour-plats:hover {
+    background-color: #FFB41D;
+}
+
+.message-plats-vide {
+    text-align: center;
+}
+
+.tableau-plats {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fffaf0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.tableau-plats th,
+.tableau-plats td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #f3d69f;
+}
+
+.tableau-plats th {
+    background-color: #FFECCE;
+    color: #8C5517;
+}
+
+.bouton-modifier-plat,
+.bouton-supprimer-plat {
+    display: inline-block;
+    margin: 4px;
+    padding: 8px 12px;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.bouton-modifier-plat {
+    background-color: #FFCD70;
+}
+
+.bouton-modifier-plat:hover {
+    background-color: #FFB41D;
+}
+
+.bouton-supprimer-plat {
+    background-color: #f3a19b;
+}
+
+.bouton-supprimer-plat:hover {
+    background-color: #e46f66;
+}
+
+.formulaire-plat {
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+    padding: 25px;
+    background-color: #FFECCE;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.formulaire-plat label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.formulaire-plat input,
+.formulaire-plat textarea,
+.formulaire-plat select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+}
+
+.formulaire-plat textarea {
+    min-height: 100px;
+}
+
+.choix-plat-actif {
+    font-weight: normal;
+}
+
+.choix-plat-actif input {
+    width: auto;
+    margin-right: 8px;
+}
+
+.bouton-formulaire-plat {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFCD70;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bouton-formulaire-plat:hover {
+    background-color: #FFB41D;
+}
+
+.message-erreur-plat {
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    padding: 12px;
+    background-color: #f8d7da;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .page-gestion-plats,
+    .page-modifier-plat,
+    .page-ajouter-plat {
+        padding: 25px 15px;
+    }
+
+    .tableau-plats,
+    .tableau-plats thead,
+    .tableau-plats tbody,
+    .tableau-plats tr,
+    .tableau-plats td {
+        display: block;
+        width: 100%;
+    }
+
+    .tableau-plats thead {
+        display: none;
+    }
+
+    .tableau-plats tr {
+        background-color: #fffaf0;
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #f3d69f;
+        border-radius: 12px;
+    }
+
+    .tableau-plats td {
+        text-align: left;
+    }
+
+    .formulaire-plat {
+        padding: 20px;
+    }
+}

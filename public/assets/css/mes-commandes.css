@@ -1,0 +1,159 @@
+.mes-commandes-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.mes-commandes-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #8C5517;
+}
+
+.table-container {
+    width: 100%;
+}
+
+.commande-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fffaf0;
+}
+
+.commande-table,
+.commande-table tr,
+.commande-table th,
+.commande-table td {
+    box-sizing: border-box;
+}
+
+.commande-table th,
+.commande-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #f3d69f;
+}
+
+.commande-table th:nth-child(9),
+.commande-table td:nth-child(9),
+.commande-table th:nth-child(10),
+.commande-table td:nth-child(10) {
+    min-width: 80px;
+    white-space: nowrap;
+}
+
+.commande-table th {
+    background-color: #FFECCE;
+    color: #8C5517;
+}
+
+.commande-table a {
+    display: inline-block;
+    margin: 4px;
+    padding: 6px 10px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+/* Mobile : le tableau devient des blocs simples */
+@media screen and (max-width: 1144px) {
+    .mes-commandes-page {
+        padding: 10px;
+    }
+
+    .commande-table,
+    .commande-table thead,
+    .commande-table tbody,
+    .commande-table tr,
+    .commande-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .commande-table thead {
+        display: none;
+    }
+
+    .commande-table {
+        background-color: transparent;
+    }
+
+    .commande-table tr {
+        background-color: #fffaf0;
+        margin-bottom: 18px;
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid #f3d69f;
+        box-shadow: 0 4px 12px rgba(140, 85, 23, 0.12);
+    }
+
+    .commande-table td {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        border-bottom: 1px solid #f3d69f;
+        padding: 10px 0;
+        text-align: right;
+    }
+
+    .commande-table td::before {
+        font-weight: bold;
+        color: #8C5517;
+        text-align: left;
+    }
+
+    .commande-table td:nth-child(1)::before {
+        content: "Menu";
+    }
+
+    .commande-table td:nth-child(2)::before {
+        content: "Commande";
+    }
+
+    .commande-table td:nth-child(3)::before {
+        content: "Prestation";
+    }
+
+    .commande-table td:nth-child(4)::before {
+        content: "Heure";
+    }
+
+    .commande-table td:nth-child(5)::before {
+        content: "Adresse";
+    }
+
+    .commande-table td:nth-child(6)::before {
+        content: "Ville";
+    }
+
+    .commande-table td:nth-child(7)::before {
+        content: "Code postal";
+    }
+
+    .commande-table td:nth-child(8)::before {
+        content: "Personnes";
+    }
+
+    .commande-table td:nth-child(9)::before {
+        content: "Prix";
+    }
+
+    .commande-table td:nth-child(10)::before {
+        content: "Statut";
+    }
+
+    .commande-table td:nth-child(11) {
+        display: block;
+        text-align: center;
+    }
+
+    .commande-table td:last-child {
+        border-bottom: none;
+    }
+
+    .commande-table a {
+        margin-top: 8px;
+    }
+}

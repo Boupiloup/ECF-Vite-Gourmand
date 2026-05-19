@@ -103,112 +103,117 @@ if ($id !== null) {
 
             <div class="menu-detail__content">
 
-                <div class="menu-detail__left">
-                    <div class="menu-detail__image">
-                        <?php if (!empty($images)): ?>
+                <div class="menu-detail__image">
+                    <?php if (!empty($images)): ?>
 
-                            <button class="slider-prev">←</button>
-                            <img src="<?= htmlspecialchars($images[0]['url']) ?>"
-                                alt="<?= htmlspecialchars($images[0]['alt']) ?>">
-                            <button class="slider-next">→</button>
-                            <div class="slider-counter"></div>
+                        <button class="slider-prev">←</button>
 
-                        <?php else: ?>
-                            <p>Aucune photo disponible</p>
-                        <?php endif; ?>
-                    </div>
+                        <img
+                            src="<?= htmlspecialchars($images[0]['url']) ?>"
+                            alt="<?= htmlspecialchars($images[0]['alt']) ?>"
+                        >
 
-                    <div class="menu-detail__composition">
+                        <button class="slider-next">→</button>
 
-                        <h2>Entrée(s) :</h2>
+                        <div class="slider-counter"></div>
 
-                        <?php if (!empty($entrees)): ?>
-                            <?php foreach ($entrees as $entree): ?>
-                                <p><?php echo htmlspecialchars($entree['nom']); ?></p>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <p>Aucune entrée disponible</p>
-                        <?php endif; ?>
+                    <?php else: ?>
 
+                        <p>Aucune photo disponible</p>
 
-                        <h2>Plat(s) :</h2>
-
-                        <?php if (!empty($plats)): ?>
-                            <?php foreach ($plats as $plat): ?>
-                                <p><?php echo htmlspecialchars($plat['nom']); ?></p>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <p>Aucun plat disponible</p>
-                        <?php endif; ?>
-
-
-                        <h2>Dessert(s) :</h2>
-
-                        <?php if (!empty($desserts)): ?>
-                            <?php foreach ($desserts as $dessert): ?>
-                                <p><?php echo htmlspecialchars($dessert['nom']); ?></p>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <p>Aucun dessert disponible</p>
-                        <?php endif; ?>
-
-
-                    </div>
+                    <?php endif; ?>
                 </div>
 
-                <div class="menu-detail__right">
-                    <div class="menu-detail__badges">
-                        <span>Thème : <?= htmlspecialchars($menu['theme_nom']) ?></span>
-                        <span>Régime : <?= htmlspecialchars($menu['regime_nom']) ?></span>
-                    </div>
-
-                    <details class="menu-detail__allergenes">
-                        <summary>Liste d'allergènes ⮟</summary>
-
-                        <?php if (!empty($allergenes)): ?>
-                            <ul>
-                                <?php foreach ($allergenes as $allergene): ?>
-                                    <li><?php echo htmlspecialchars($allergene['libelle']); ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        <?php else: ?>
-                            <p>Aucun allergène lié à ce menu</p>
-                        <?php endif; ?>
-
-                    </details>
-
-                    <div class="menu-detail__infos">
-                        <p>
-                            <strong>Description :</strong>
-                            <?= htmlspecialchars($menu['description']) ?>
-                        </p>
-                    </div>
-
-                    <div class="menu-detail__minimum">
-                        <?= htmlspecialchars($menu['nombre_personne_min']) ?> Personnes minimum
-                    </div>
-
-                    <div class="menu-detail__infos">
-                        <p class="conditions_style">
-                            <strong>Conditions :</strong>
-                            <?= htmlspecialchars($menu['condition_menu']) ?>
-                        </p>
-
-                        <p>
-                            <strong>Stock disponible :</strong>
-                            <?= htmlspecialchars($menu['stock_disponible']) ?>
-                        </p>
-
-                        <p>
-                            <strong>Prix :</strong>
-                            <?= htmlspecialchars($menu['prix_min']) ?> €
-                        </p>
-                    </div>
-
-                    <a href="commande.php?menu_id=<?= urlencode($menu['id']) ?>" class="menu-detail__button">Commander</a>
+                <div class="menu-detail__description">
+                    <p>
+                        <strong>Description :</strong>
+                        <?= htmlspecialchars($menu['description']) ?>
+                    </p>
                 </div>
+
+                <div class="menu-detail__badges">
+                    <span>Thème : <?= htmlspecialchars($menu['theme_nom']) ?></span>
+                    <span>Régime : <?= htmlspecialchars($menu['regime_nom']) ?></span>
+                </div>
+
+                <details class="menu-detail__allergenes">
+                    <summary>Liste d'allergènes ⮟</summary>
+
+                    <?php if (!empty($allergenes)): ?>
+                        <ul>
+                            <?php foreach ($allergenes as $allergene): ?>
+                                <li><?= htmlspecialchars($allergene['libelle']) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <p>Aucun allergène lié à ce menu</p>
+                    <?php endif; ?>
+
+                </details>
+
+                <div class="menu-detail__composition">
+
+                    <h2>Entrée(s) :</h2>
+
+                    <?php if (!empty($entrees)): ?>
+                        <?php foreach ($entrees as $entree): ?>
+                            <p><?= htmlspecialchars($entree['nom']) ?></p>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>Aucune entrée disponible</p>
+                    <?php endif; ?>
+
+                    <h2>Plat(s) :</h2>
+
+                    <?php if (!empty($plats)): ?>
+                        <?php foreach ($plats as $plat): ?>
+                            <p><?= htmlspecialchars($plat['nom']) ?></p>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>Aucun plat disponible</p>
+                    <?php endif; ?>
+
+                    <h2>Dessert(s) :</h2>
+
+                    <?php if (!empty($desserts)): ?>
+                        <?php foreach ($desserts as $dessert): ?>
+                            <p><?= htmlspecialchars($dessert['nom']) ?></p>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>Aucun dessert disponible</p>
+                    <?php endif; ?>
+
+                </div>
+
+                <div class="menu-detail__minimum">
+                    <?= htmlspecialchars($menu['nombre_personne_min']) ?> Personnes minimum
+                </div>
+
+                <div class="menu-detail__infos">
+
+                    <p>
+                        <strong>Prix pour <?= htmlspecialchars($menu['nombre_personne_min']) ?> personnes :</strong>
+                        <?= htmlspecialchars($menu['prix_min']) ?> €
+                    </p>
+
+                    <p class="conditions_style">
+                        <strong>Conditions :</strong>
+                        <?= htmlspecialchars($menu['condition_menu']) ?>
+                    </p>
+
+                    <p>
+                        <strong>Commandes restantes :</strong>
+                        <?= htmlspecialchars($menu['stock_disponible']) ?>
+                    </p>
+
+                </div>
+
+                <a href="commande.php?menu_id=<?= urlencode($menu['id']) ?>" class="menu-detail__button">
+                    Commander
+                </a>
 
             </div>
+
         </section>
 
     <?php else: ?>

@@ -4,7 +4,34 @@ $pageTitle = 'Nos menus';
 include_once __DIR__ . '/../includes/header.php';
 require_once '../includes/db.php';
 
-$menus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
+/* Récupère tous les menus */
+$tousLesMenus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
+
+/* Page actuelle */
+$page = $_GET['page'] ?? 1;
+$page = (int) $page;
+
+/* Empêche une page inférieure à 1 */
+if ($page < 1) {
+    $page = 1;
+}
+
+/* Nombre de menus par page */
+$menusParPage = 6;
+
+/* Nombre total de pages */
+$totalMenus = count($tousLesMenus);
+$totalPages = ceil($totalMenus / $menusParPage);
+
+/* Point de départ */
+$depart = ($page - 1) * $menusParPage;
+
+/* Menus affichés sur la page */
+$menus = array_slice($tousLesMenus, $depart, $menusParPage);
+
+$themes = $pdo->query('SELECT * FROM theme')->fetchAll(PDO::FETCH_ASSOC);
+
+$regimes = $pdo->query('SELECT * FROM regime')->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main>
@@ -21,7 +48,12 @@ $menus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
     <!-- FILTRES MENUS -->
 
     <section class="filtre-container">
-        <form class="filter-form" method="GET">
+
+        <button type="button" class="filter-toggle" id="filterToggle">
+            Filtres ▼
+        </button>
+
+        <form id="filterForm" class="filter-form" method="GET">
 
             <div class="filter-group">
                 <label for="prix_max" class="visually-hidden">Prix maximum</label>
@@ -44,10 +76,11 @@ $menus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
                 <label for="theme" class="visually-hidden">Thème</label>
                 <select id="theme" name="theme">
                     <option value="">Thème</option>
-                    <option value="noel">Noël</option>
-                    <option value="paques">Pâques</option>
-                    <option value="classique">Classique</option>
-                    <option value="evenement">Événement</option>
+                    <?php foreach ($themes as $theme): ?>
+                        <option value="<?php echo htmlspecialchars($theme['id']); ?>">
+                            <?php echo htmlspecialchars($theme['libelle']); ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
@@ -55,9 +88,11 @@ $menus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
                 <label for="regime_alimentaire" class="visually-hidden">Régime alimentaire</label>
                 <select id="regime_alimentaire" name="regime_alimentaire">
                     <option value="">Régime alimentaire</option>
-                    <option value="classique">Classique</option>
-                    <option value="vegetarien">Végétarien</option>
-                    <option value="vegan">Vegan</option>
+                    <?php foreach ($regimes as $regime): ?>
+                        <option value="<?php echo htmlspecialchars($regime['id']); ?>">
+                            <?php echo htmlspecialchars($regime['libelle']); ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
@@ -74,7 +109,7 @@ $menus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
 
     <section class="menus-container">
 
-        <div class="menus-grid">
+        <div id="menusGrid" class="menus-grid">
 
             <?php
             foreach ($menus as $menu): ?>
@@ -101,9 +136,23 @@ $menus = $pdo->query('SELECT * FROM menu')->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         </div>
 
+        <div class="pagination">
+
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+
+                <a href="menus.php?page=<?= $i ?>">
+                    <?= $i ?>
+                </a>
+
+            <?php endfor; ?>
+
+        </div>
     </section>
 
 </main>
+
+<script src="assets/js/filtresMenus.js"></script>
+<script src="assets/js/toggleFiltres.js"></script>
 
 <?php
 include_once __DIR__ . '/../includes/footer.php';

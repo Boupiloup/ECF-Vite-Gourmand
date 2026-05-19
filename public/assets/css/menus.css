@@ -9,17 +9,26 @@
 /* Style des filtres de la page Menus */
 
 .filtre-container {
-    padding: 20px;
+    padding: 12px 20px;
     background-color: rgba(255, 180, 29, 0.06);
     margin: 20px 0 50px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .filter-form {
     display: flex;
+    flex-wrap: nowrap;
     gap: 20px;
     justify-content: center;
+    align-items: center;
+
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 18px 28px;
+    background-color: rgba(255, 180, 29, 0.12);
+    border-radius: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .filter-group input,
@@ -28,6 +37,7 @@
     border-radius: 6px;
     background-color: rgba(255, 211, 124, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* rendre invisible les labels , mais respecter l'accessibilité */
@@ -94,4 +104,107 @@
     background-color: rgba(255, 218, 96, 0.86);
     border: none;
     border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Bouton filtres caché sur ordinateur */
+.filter-toggle {
+    display: none;
+}
+
+.pagination {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.pagination a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 6px 12px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.pagination a:hover {
+    background-color: #8C5517;
+    color: #fff;
+}
+
+/* Version mobile */
+@media screen and (max-width: 885px) {
+
+    .menus-hero {
+        padding: 20px 10px;
+    }
+
+    .menus-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .menus-hero h2 {
+        font-size: 1.2rem;
+    }
+
+    .filter-toggle {
+        display: block;
+        margin: 0 auto 15px auto;
+        padding: 8px 35px;
+        background-color: rgba(255, 218, 96, 0.86);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 6px;
+        font-size: 1.1rem;
+        cursor: pointer;
+    }
+
+    .filter-form {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .filter-form.active {
+        display: flex;
+    }
+
+    .filter-group input,
+    .filter-group select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .menus-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 380px;
+        padding: 0 15px;
+    }
+
+    .card-menu {
+        border-radius: 18px;
+    }
+
+    .card-menu img {
+        height: 190px;
+    }
+
+    .card-menu h3 {
+        font-size: 1.5rem;
+    }
+
+    .card-menu p {
+        font-size: 0.95rem;
+    }
+
+    .card-bottom {
+        align-items: center;
+        gap: 8px;
+        padding: 0 10px 10px 10px;
+    }
+
+    .btn-commander {
+        margin: 8px 0 0 auto;
+    }
 }

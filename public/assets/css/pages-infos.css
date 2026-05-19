@@ -1,0 +1,129 @@
+/* Pages Contact, Mentions légales et CGV */
+
+.page-contact,
+.mentions-legales,
+.cgv {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.page-contact h1,
+.mentions-legales h1,
+.cgv h1 {
+    text-align: center;
+    color: #7A3F0A;
+}
+
+.page-contact p {
+    text-align: center;
+    color: #000;
+}
+
+/* Formulaire contact */
+
+.page-contact form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: #F6DCA8;
+    border-radius: 15px;
+}
+
+.page-contact label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    color: #000;
+}
+
+.page-contact input,
+.page-contact textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.page-contact textarea {
+    height: 150px;
+}
+
+.page-contact button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 12px 30px;
+    background-color: #D98200;
+    color: #000;
+    border: 1px solid #8C5517;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Messages */
+
+.message-succes,
+.message-erreur {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.message-succes {
+    background-color: #d4edda;
+}
+
+.message-erreur {
+    background-color: #f8d7da;
+}
+
+/* Mentions légales et CGV */
+
+.mentions-legales section,
+.cgv section {
+    background-color: #F6DCA8;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.mentions-legales h2,
+.cgv h2 {
+    color: #7A3F0A;
+}
+
+.mentions-legales p,
+.cgv p {
+    color: #000;
+    line-height: 1.6;
+}
+
+/* Version mobile */
+
+@media screen and (max-width: 768px) {
+    .page-contact,
+    .mentions-legales,
+    .cgv {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .page-contact form {
+        padding: 15px;
+    }
+
+    .page-contact h1,
+    .mentions-legales h1,
+    .cgv h1 {
+        font-size: 1.8rem;
+    }
+}

@@ -1,0 +1,138 @@
+/* detail-commande-employe.css */
+
+.detail-commande-employe {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.detail-commande-employe h1 {
+    text-align: center;
+    color: #8C5517;
+    margin-bottom: 30px;
+}
+
+.detail-employe-section {
+    background-color: #FFECCE;
+    padding: 28px;
+    margin-bottom: 22px;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.detail-employe-section h2,
+.detail-employe-section p,
+.detail-employe-form {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.detail-employe-section h2 {
+    color: #8C5517;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.detail-employe-section p {
+    margin: 10px auto;
+    line-height: 1.5;
+}
+
+.detail-employe-section strong {
+    color: #8C5517;
+}
+
+.detail-employe-message-erreur {
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #f8d7da;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.detail-employe-form {
+    max-width: none;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.detail-employe-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.detail-employe-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #8C5517;
+    border-radius: 8px;
+}
+
+.detail-employe-bouton,
+.detail-employe-lien {
+    display: inline-block;
+    padding: 11px 18px;
+    background-color: #FFCD70;
+    color: #000;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.detail-employe-bouton {
+    width: 100%;
+}
+
+.detail-employe-bouton:hover,
+.detail-employe-lien:hover {
+    background-color: #FFB41D;
+}
+
+.detail-employe-lien.danger {
+    background-color: #f3a19b;
+}
+
+.detail-employe-lien.danger:hover {
+    background-color: #e46f66;
+}
+
+.detail-employe-actions {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.detail-employe-actions a {
+    margin: 5px;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .detail-commande-employe {
+        padding: 25px 15px;
+    }
+
+    .detail-employe-section {
+        padding: 20px;
+    }
+
+    .detail-employe-section h2,
+    .detail-employe-section p,
+    .detail-employe-form {
+        width: 100%;
+    }
+
+    .detail-employe-lien {
+        display: block;
+        margin-bottom: 10px;
+    }
+}

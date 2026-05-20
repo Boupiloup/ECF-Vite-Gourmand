@@ -2,45 +2,48 @@
 
 try {
 
+    // HEROKU (JawsDB)
     if (getenv('JAWSDB_URL')) {
 
-        // Connexion MySQL distante avec JawsDB sur Heroku
-        $url = parse_url(getenv('JAWSDB_URL'));
+        $db = parse_url(getenv('JAWSDB_URL'));
 
-        $DB_HOST = $url['host'];
-        $DB_PORT = $url['port'] ?? 3306;
-        $DB_NAME = ltrim($url['path'], '/');
-        $DB_USER = $url['user'];
-        $DB_PASSWORD = $url['pass'];
+        $DB_HOST = $db['host'];
+        $DB_PORT = $db['port'];
+        $DB_NAME = ltrim($db['path'], '/');
+        $DB_USER = $db['user'];
+        $DB_PASSWORD = $db['pass'];
 
     } else {
 
-        // Connexion MySQL locale avec le fichier .env
-        $envPath = __DIR__ . '/../.env';
-
-        if (!file_exists($envPath)) {
-            die("Erreur : fichier .env introuvable.");
-        }
-
-        $env = parse_ini_file($envPath);
+        // LOCAL (.env)
+        $env = parse_ini_file(__DIR__ . '/../.env');
 
         $DB_HOST = $env['DB_HOST'];
         $DB_PORT = $env['DB_PORT'];
         $DB_NAME = $env['DB_NAME'];
         $DB_USER = $env['DB_USER'];
         $DB_PASSWORD = $env['DB_PASSWORD'];
+
     }
 
-    // DSN = adresse complète de la base de données pour PDO
-    $dsn = "mysql:host=$DB_HOST;port=$DB_PORT;dbname=$DB_NAME;charset=utf8mb4";
+    $dsn = "mysql:
+        host=$DB_HOST;
+        port=$DB_PORT;
+        dbname=$DB_NAME;
+        charset=utf8mb4";
 
-    // Connexion à la base de données avec PDO
-    $pdo = new PDO($dsn, $DB_USER, $DB_PASSWORD);
-
-    // Active les erreurs PDO en mode exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO(
+        $dsn,
+        $DB_USER,
+        $DB_PASSWORD,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]
+    );
 
 } catch (PDOException $e) {
 
-    die("Erreur de connexion à la base de données : " . $e->getMessage());
+    die('Erreur connexion BDD : ' . $e->getMessage());
+
 }

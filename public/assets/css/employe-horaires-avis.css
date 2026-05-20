@@ -1,52 +1,52 @@
 /* employe-horaires-avis.css */
 
-.gestion-horaires-page,
-.modifier-horaire-page,
-.employe-avis-page {
+.page-gestion-horaires,
+.page-modifier-horaire,
+.page-avis-employe {
     max-width: 1050px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-.gestion-horaires-page h1,
-.modifier-horaire-page h1,
-.employe-avis-page h1 {
+.page-gestion-horaires h1,
+.page-modifier-horaire h1,
+.page-avis-employe h1 {
     text-align: center;
     color: #8C5517;
     margin-bottom: 25px;
 }
 
-.gestion-horaires-vide {
+.message-horaires-vide {
     text-align: center;
 }
 
-.gestion-horaires-table,
-.employe-avis-table {
+.tableau-horaires,
+.tableau-avis-employe {
     width: 100%;
     border-collapse: collapse;
     background-color: #fffaf0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
-.gestion-horaires-table th,
-.gestion-horaires-table td,
-.employe-avis-table th,
-.employe-avis-table td {
+.tableau-horaires th,
+.tableau-horaires td,
+.tableau-avis-employe th,
+.tableau-avis-employe td {
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #f3d69f;
 }
 
-.gestion-horaires-table th,
-.employe-avis-table th {
+.tableau-horaires th,
+.tableau-avis-employe th {
     background-color: #FFECCE;
     color: #8C5517;
 }
 
-.gestion-horaires-action,
-.employe-avis-action,
-.employe-avis-action-refuser,
-.horaire-form-retour {
+.bouton-modifier-horaire,
+.bouton-valider-avis,
+.bouton-refuser-avis,
+.bouton-retour-horaires {
     display: inline-block;
     margin: 4px;
     padding: 8px 12px;
@@ -56,32 +56,32 @@
     font-weight: bold;
 }
 
-.gestion-horaires-action,
-.employe-avis-action,
-.horaire-form-retour {
+.bouton-modifier-horaire,
+.bouton-valider-avis,
+.bouton-retour-horaires {
     background-color: #FFCD70;
 }
 
-.gestion-horaires-action:hover,
-.employe-avis-action:hover,
-.horaire-form-retour:hover {
+.bouton-modifier-horaire:hover,
+.bouton-valider-avis:hover,
+.bouton-retour-horaires:hover {
     background-color: #FFB41D;
 }
 
-.employe-avis-action-refuser {
+.bouton-refuser-avis {
     background-color: #f3a19b;
 }
 
-.employe-avis-action-refuser:hover {
+.bouton-refuser-avis:hover {
     background-color: #e46f66;
 }
 
-.employe-avis-aucune-action {
+.texte-avis-sans-action {
     color: #8C5517;
     font-weight: bold;
 }
 
-.horaire-form {
+.formulaire-horaire {
     max-width: 600px;
     margin: 0 auto 25px auto;
     padding: 25px;
@@ -90,13 +90,13 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.horaire-form label {
+.formulaire-horaire label {
     display: block;
     margin-bottom: 6px;
     font-weight: bold;
 }
 
-.horaire-form input {
+.formulaire-horaire input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -104,7 +104,7 @@
     border-radius: 8px;
 }
 
-.horaire-form-bouton {
+.bouton-formulaire-horaire {
     width: 100%;
     padding: 12px;
     background-color: #FFCD70;
@@ -114,17 +114,17 @@
     cursor: pointer;
 }
 
-.horaire-form-bouton:hover {
+.bouton-formulaire-horaire:hover {
     background-color: #FFB41D;
 }
 
-.horaire-form-retour {
+.bouton-retour-horaires {
     display: block;
     width: fit-content;
     margin: 0 auto 25px auto;
 }
 
-.horaire-form-erreur {
+.message-erreur-horaire {
     max-width: 600px;
     margin: 0 auto 20px auto;
     padding: 12px;
@@ -137,33 +137,33 @@
 /* Mobile */
 @media screen and (max-width: 768px) {
 
-    .gestion-horaires-page,
-    .modifier-horaire-page,
-    .employe-avis-page {
+    .page-gestion-horaires,
+    .page-modifier-horaire,
+    .page-avis-employe {
         padding: 25px 15px;
     }
 
-    .gestion-horaires-table,
-    .gestion-horaires-table thead,
-    .gestion-horaires-table tbody,
-    .gestion-horaires-table tr,
-    .gestion-horaires-table td,
-    .employe-avis-table,
-    .employe-avis-table thead,
-    .employe-avis-table tbody,
-    .employe-avis-table tr,
-    .employe-avis-table td {
+    .tableau-horaires,
+    .tableau-horaires thead,
+    .tableau-horaires tbody,
+    .tableau-horaires tr,
+    .tableau-horaires td,
+    .tableau-avis-employe,
+    .tableau-avis-employe thead,
+    .tableau-avis-employe tbody,
+    .tableau-avis-employe tr,
+    .tableau-avis-employe td {
         display: block;
         width: 100%;
     }
 
-    .gestion-horaires-table thead,
-    .employe-avis-table thead {
+    .tableau-horaires thead,
+    .tableau-avis-employe thead {
         display: none;
     }
 
-    .gestion-horaires-table tr,
-    .employe-avis-table tr {
+    .tableau-horaires tr,
+    .tableau-avis-employe tr {
         background-color: #fffaf0;
         margin-bottom: 15px;
         padding: 10px;
@@ -171,12 +171,12 @@
         border-radius: 12px;
     }
 
-    .gestion-horaires-table td,
-    .employe-avis-table td {
+    .tableau-horaires td,
+    .tableau-avis-employe td {
         text-align: left;
     }
 
-    .horaire-form {
+    .formulaire-horaire {
         padding: 20px;
     }
 }

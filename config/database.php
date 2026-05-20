@@ -2,7 +2,7 @@
 
 try {
 
-    // HEROKU (JawsDB)
+    // Production (Heroku)
     if (getenv('JAWSDB_URL')) {
 
         $db = parse_url(getenv('JAWSDB_URL'));
@@ -15,7 +15,7 @@ try {
 
     } else {
 
-        // LOCAL (.env)
+        // Local (.env)
         $env = parse_ini_file(__DIR__ . '/../.env');
 
         $DB_HOST = $env['DB_HOST'];
@@ -26,7 +26,8 @@ try {
 
     }
 
-    $dsn = "mysql:
+    $dsn =
+        "mysql:
         host=$DB_HOST;
         port=$DB_PORT;
         dbname=$DB_NAME;

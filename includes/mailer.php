@@ -16,9 +16,11 @@ $env = file_exists(__DIR__ . '/../.env')
     ? parse_ini_file(__DIR__ . '/../.env')
     : [];
 
-function getConfigValue($key, $env)
+function getConfigValue($key, $env, $fallbackKey = null)
 {
-    return getenv($key) ?: ($env[$key] ?? null);
+    return getenv($key)
+        ?: ($env[$key] ?? null)
+        ?: ($fallbackKey ? (getenv($fallbackKey) ?: ($env[$fallbackKey] ?? null)) : null);
 }
 
 function templateEmail($message)
@@ -50,30 +52,35 @@ function envoyerEmail($destinataire, $sujet, $message)
 {
     global $env;
 
-    $mail = new PHPMailer(true);
+    try {
+        $mail = new PHPMailer(true);
 
-    $mail->isSMTP();
-    $mail->Host = getConfigValue('SMTP_HOST', $env);
-    $mail->Port = (int) getConfigValue('SMTP_PORT', $env);
+        $mail->isSMTP();
+        $mail->Host = getConfigValue('SMTP_HOST', $env, 'MAIL_HOST');
+        $mail->Port = (int) getConfigValue('SMTP_PORT', $env, 'MAIL_PORT');
 
-    $mail->SMTPAuth = true;
-    $mail->Username = getConfigValue('SMTP_USERNAME', $env);
-    $mail->Password = getConfigValue('SMTP_PASSWORD', $env);
+        $mail->SMTPAuth = true;
+        $mail->Username = getConfigValue('SMTP_USERNAME', $env, 'MAIL_USERNAME');
+        $mail->Password = getConfigValue('SMTP_PASSWORD', $env, 'MAIL_PASSWORD');
 
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
-    $mail->setFrom(
-        getConfigValue('SMTP_FROM_EMAIL', $env),
-        getConfigValue('SMTP_FROM_NAME', $env)
-    );
+        $mail->setFrom(
+            getConfigValue('SMTP_FROM_EMAIL', $env, 'MAIL_FROM'),
+            getConfigValue('SMTP_FROM_NAME', $env, 'MAIL_FROM_NAME')
+        );
 
-    $mail->addAddress($destinataire);
+        $mail->addAddress($destinataire);
 
-    $mail->isHTML(true);
-    $mail->CharSet = 'UTF-8';
-    $mail->Subject = $sujet;
-    $mail->Body = templateEmail($message);
-    $mail->AltBody = strip_tags($message);
+        $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
+        $mail->Subject = $sujet;
+        $mail->Body = templateEmail($message);
+        $mail->AltBody = strip_tags($message);
 
-    return $mail->send();
+        return $mail->send();
+    } catch (Exception $e) {
+        error_log('Erreur envoi email : ' . $e->getMessage());
+        return false;
+    }
 }

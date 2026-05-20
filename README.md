@@ -115,7 +115,7 @@ bdd_ecf_vite_et_gourmand
 Importer :
 
 ```text
-database.sql
+bdd_ecf_vite_et_gourmand.sql
 ```
 
 ---
@@ -206,21 +206,21 @@ http://localhost/ECF_Vite_et_Gourmand/public/
 
 ```text
 Email : admin@test.fr
-Mot de passe : Admin123++
+Mot de passe : Admin123+
 ```
 
 ### Employé
 
 ```text
 Email : employe@test.fr
-Mot de passe : Employe123++
+Mot de passe : Employe123+
 ```
 
 ### Utilisateur
 
 ```text
 Email : user@test.fr
-Mot de passe : User123++
+Mot de passe : User123+
 ```
 
 ---

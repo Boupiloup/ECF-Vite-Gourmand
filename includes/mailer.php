@@ -48,7 +48,7 @@ function templateEmail($message)
     ";
 }
 
-function envoyerEmail($destinataire, $sujet, $message)
+function envoyerEmail($destinataire, $sujet, $message, $replyTo = null)
 {
     global $env;
 
@@ -71,6 +71,10 @@ function envoyerEmail($destinataire, $sujet, $message)
         );
 
         $mail->addAddress($destinataire);
+
+        if ($replyTo && filter_var($replyTo, FILTER_VALIDATE_EMAIL)) {
+            $mail->addReplyTo($replyTo);
+        }
 
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';

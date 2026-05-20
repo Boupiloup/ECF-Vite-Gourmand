@@ -35,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>" . nl2br(htmlspecialchars($description)) . "</p>
         ";
 
-        $emailEntreprise = "contact@viteetgourmand.fr";
+        $emailEntreprise = getConfigValue('CONTACT_TO_EMAIL', $env) ?: 'contact@viteetgourmand.fr';
 
-        if (envoyerEmail($emailEntreprise, $sujetMail, $messageMail)) {
+        if (envoyerEmail($emailEntreprise, $sujetMail, $messageMail, $email)) {
             $messageSucces = 'Votre message a été envoyé avec succès.';
 
             $titre = '';

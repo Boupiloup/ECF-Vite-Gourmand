@@ -82,7 +82,7 @@ require_once __DIR__ . '/../includes/header.php';
                     <td><?= htmlspecialchars($stat['menu_titre']) ?></td>
                     <td><?= htmlspecialchars($stat['nombre_commandes']) ?></td>
                     <td><?= htmlspecialchars($stat['chiffre_affaires']) ?> €</td>
-                    <td><?= htmlspecialchars($stat['date_generation']) ?></td>
+                    <td><?= htmlspecialchars($stat['date_generation'] ?? 'Temps reel') ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

@@ -17,7 +17,7 @@ function getMongoConfigValue($key, $env)
 $mongoUri = getMongoConfigValue('MONGODB_URI', $env);
 $mongoDatabaseName = getMongoConfigValue('MONGODB_DATABASE', $env) ?: 'vite_gourmand_nosql';
 
-if (!$mongoUri) {
+if (!$mongoUri || strpos($mongoUri, '<db_password>') !== false) {
     throw new RuntimeException('Configuration MongoDB manquante.');
 }
 

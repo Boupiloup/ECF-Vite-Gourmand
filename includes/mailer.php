@@ -3,9 +3,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require_once __DIR__ . '/../lib/phpmailer/src/Exception.php';
-require_once __DIR__ . '/../lib/phpmailer/src/PHPMailer.php';
-require_once __DIR__ . '/../lib/phpmailer/src/SMTP.php';
+require_once __DIR__ . '/../lib/phpMailer/src/Exception.php';
+require_once __DIR__ . '/../lib/phpMailer/src/PHPMailer.php';
+require_once __DIR__ . '/../lib/phpMailer/src/SMTP.php';
 
 /*
     Lecture du fichier .env en local.

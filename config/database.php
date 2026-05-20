@@ -1,18 +1,17 @@
 <?php
 
 try {
-    $jawsDbUrl = getenv('JAWSDB_URL') ?: ($_ENV['JAWSDB_URL'] ?? null);
 
     // Production (Heroku)
-    if ($jawsDbUrl) {
+    if (getenv('JAWSDB_URL')) {
 
-        $db = parse_url($jawsDbUrl);
+        $db = parse_url(getenv('JAWSDB_URL'));
 
         $DB_HOST = $db['host'];
-        $DB_PORT = $db['port'] ?? 3306;
+        $DB_PORT = $db['port'];
         $DB_NAME = ltrim($db['path'], '/');
-        $DB_USER = rawurldecode($db['user']);
-        $DB_PASSWORD = rawurldecode($db['pass']);
+        $DB_USER = $db['user'];
+        $DB_PASSWORD = $db['pass'];
 
     } else {
 
@@ -27,7 +26,12 @@ try {
 
     }
 
-    $dsn = "mysql:host=$DB_HOST;port=$DB_PORT;dbname=$DB_NAME;charset=utf8mb4";
+    $dsn =
+        "mysql:
+        host=$DB_HOST;
+        port=$DB_PORT;
+        dbname=$DB_NAME;
+        charset=utf8mb4";
 
     $pdo = new PDO(
         $dsn,

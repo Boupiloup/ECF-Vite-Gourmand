@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../includes/mongodb.php';
+require_once __DIR__ . '/../includes/db.php';
 
 $pageTitle = 'Statistiques admin';
 
@@ -17,8 +17,38 @@ if ($role !== 1) {
     exit();
 }
 
-$collection = $mongoDatabase->stats_menus;
-$stats = $collection->find()->toArray();
+function getStatsDepuisMysql($pdo)
+{
+    $sql = "SELECT
+                menu.id AS menu_id,
+                menu.titre AS menu_titre,
+                COUNT(commande.id) AS nombre_commandes,
+                COALESCE(SUM(commande.prix_total), 0) AS chiffre_affaires
+            FROM menu
+            LEFT JOIN commande ON commande.menu_id = menu.id
+            GROUP BY menu.id, menu.titre
+            ORDER BY menu.titre ASC";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+$stats = [];
+
+try {
+    require_once __DIR__ . '/../includes/mongodb.php';
+
+    $collection = $mongoDatabase->stats_menus;
+    $stats = $collection->find([], ['sort' => ['menu_titre' => 1]])->toArray();
+} catch (Throwable $e) {
+    error_log('Stats MongoDB indisponibles : ' . $e->getMessage());
+}
+
+if (empty($stats)) {
+    $stats = getStatsDepuisMysql($pdo);
+}
 
 $labels = [];
 $commandes = [];

@@ -4,11 +4,25 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use MongoDB\Client;
 
-/* Lecture du fichier .env */
-$env = parse_ini_file(__DIR__ . '/../.env');
+/* Lecture du fichier .env en local, Config Vars en production */
+$env = file_exists(__DIR__ . '/../.env')
+    ? parse_ini_file(__DIR__ . '/../.env')
+    : [];
 
-/* Connexion à MongoDB */
-$mongoClient = new Client($env['MONGODB_URI']);
+function getMongoConfigValue($key, $env)
+{
+    return getenv($key) ?: ($env[$key] ?? null);
+}
 
-/* Sélection de la base MongoDB */
-$mongoDatabase = $mongoClient->{$env['MONGODB_DATABASE']};
+$mongoUri = getMongoConfigValue('MONGODB_URI', $env);
+$mongoDatabaseName = getMongoConfigValue('MONGODB_DATABASE', $env) ?: 'vite_gourmand_nosql';
+
+if (!$mongoUri) {
+    throw new RuntimeException('Configuration MongoDB manquante.');
+}
+
+/* Connexion a MongoDB */
+$mongoClient = new Client($mongoUri);
+
+/* Selection de la base MongoDB */
+$mongoDatabase = $mongoClient->{$mongoDatabaseName};

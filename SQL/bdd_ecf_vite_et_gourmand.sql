@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 20 mai 2026 à 04:48
+-- Généré le : mer. 20 mai 2026 à 06:08
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -166,17 +166,17 @@ CREATE TABLE `image` (
 --
 
 INSERT INTO `image` (`id`, `url`, `alt`, `menu_id`) VALUES
-(1, 'https://picsum.photos/seed/menu1-1/800/600', 'Menu Classique - photo 1', 1),
-(2, 'https://picsum.photos/seed/menu1-2/800/560', 'Menu Classique - photo 2', 4),
-(3, 'https://picsum.photos/seed/menu2-1/800/570', 'Menu Noël - photo 1', 5),
-(4, 'https://picsum.photos/seed/menu2-2/800/540', 'Menu Noël - photo 2', 2),
-(6, 'https://picsum.photos/seed/menu3-2/800/550', 'Menu Vegan - photo 2', 3),
-(7, 'https://picsum.photos/802/600', '', 7),
-(8, 'https://picsum.photos/801/600', '', 8),
-(12, 'https://picsum.photos/803/600', '', 8),
-(13, 'https://picsum.photos/804/600', '', 9),
-(14, 'https://picsum.photos/805/600', '', 10),
-(15, 'https://picsum.photos/seed/menu1-2/800/600', 'sdsdsdsd', 1);
+(1, 'assets/img/image/plat/buffet.jpg', 'Menu Classique - photo 1', 1),
+(2, 'assets/img/image/plat/cuisine.png', 'Menu Classique - photo 2', 4),
+(3, 'assets/img/image/plat/plat1.jpg', 'Menu Noël - photo 1', 5),
+(4, 'assets/img/image/plat/plat2.png', 'Menu Noël - photo 2', 2),
+(6, 'assets/img/image/plat/plat3.png', 'Menu Vegan - photo 2', 3),
+(7, 'assets/img/image/plat/plat4.jpg', 'Photo de plat ', 7),
+(8, 'assets/img/image/plat/plat5.jpg', 'Photo de plat ', 8),
+(12, 'assets/img/image/plat/plat6.png', 'Photo de plat ', 8),
+(13, 'assets/img/image/plat/plat7.png', 'Photo de plat ', 9),
+(14, 'assets/img/image/plat/plat8.png', 'Photo de plat ', 10),
+(15, 'assets/img/image/plat/plat9.png', 'Photo de plat ', 1);
 
 -- --------------------------------------------------------
 

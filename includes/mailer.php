@@ -7,15 +7,26 @@ require_once __DIR__ . '/../lib/phpmailer/src/Exception.php';
 require_once __DIR__ . '/../lib/phpmailer/src/PHPMailer.php';
 require_once __DIR__ . '/../lib/phpmailer/src/SMTP.php';
 
-/* Lecture du fichier .env */
-$env = parse_ini_file(__DIR__ . '/../.env');
+/*
+    Lecture du fichier .env en local.
+    Sur Heroku, le fichier .env n'existe pas :
+    les valeurs seront récupérées depuis les Config Vars.
+*/
+$env = file_exists(__DIR__ . '/../.env')
+    ? parse_ini_file(__DIR__ . '/../.env')
+    : [];
+
+function getConfigValue($key, $env)
+{
+    return getenv($key) ?: ($env[$key] ?? null);
+}
 
 function templateEmail($message)
 {
     return "
     <div style='background-color:#f6f1e8; padding:30px; font-family:Arial, sans-serif; color:#333;'>
         <div style='max-width:600px; margin:0 auto; background-color:#ffffff; padding:30px; border-radius:10px;'>
-            
+
             <h1 style='margin-top:0; color:#8b5e34; text-align:center;'>
                 Vite & Gourmand
             </h1>
@@ -42,16 +53,20 @@ function envoyerEmail($destinataire, $sujet, $message)
     $mail = new PHPMailer(true);
 
     $mail->isSMTP();
-    $mail->Host = $env['MAIL_HOST'];
-    $mail->Port = (int) $env['MAIL_PORT'];
+    $mail->Host = getConfigValue('SMTP_HOST', $env);
+    $mail->Port = (int) getConfigValue('SMTP_PORT', $env);
 
-    if (!empty($env['MAIL_USERNAME'])) {
-        $mail->SMTPAuth = true;
-        $mail->Username = $env['MAIL_USERNAME'];
-        $mail->Password = $env['MAIL_PASSWORD'];
-    }
+    $mail->SMTPAuth = true;
+    $mail->Username = getConfigValue('SMTP_USERNAME', $env);
+    $mail->Password = getConfigValue('SMTP_PASSWORD', $env);
 
-    $mail->setFrom($env['MAIL_FROM'], $env['MAIL_FROM_NAME']);
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+
+    $mail->setFrom(
+        getConfigValue('SMTP_FROM_EMAIL', $env),
+        getConfigValue('SMTP_FROM_NAME', $env)
+    );
+
     $mail->addAddress($destinataire);
 
     $mail->isHTML(true);

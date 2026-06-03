@@ -1,0 +1,41 @@
+########################################
+# ENVIRONNEMENT
+########################################
+
+APP_ENV=local
+
+
+########################################
+# BASE DE DONNÉES MYSQL (LOCAL)
+########################################
+
+DB_HOST=127.0.0.1
+DB_PORT=3306
+
+DB_NAME=bdd_ecf_vite_et_gourmand
+
+DB_USER=root
+DB_PASSWORD=
+
+
+########################################
+# EMAILS (LOCAL → MAILPIT)
+########################################
+
+SMTP_HOST=localhost
+SMTP_PORT=1025
+
+SMTP_USERNAME=
+SMTP_PASSWORD=
+
+SMTP_FROM_EMAIL=william.lafit77290@gmail.com
+SMTP_FROM_NAME="Vite & Gourmand"
+
+
+########################################
+# MONGODB (LOCAL)
+########################################
+
+MONGODB_URI=mongodb://localhost:27017
+
+MONGODB_DATABASE=vite_gourmand_nosql

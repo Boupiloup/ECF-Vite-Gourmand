@@ -1,0 +1,61 @@
+services:
+  app:
+    build: .
+    container_name: vite_gourmand_app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    env_file:
+      - .env
+    depends_on:
+      - database
+      - mongodb
+      - mailpit
+
+  database:
+    image: mariadb:10.11
+    container_name: vite_gourmand_database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bdd_ecf_vite_et_gourmand
+      MYSQL_USER: william
+      MYSQL_PASSWORD: william
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: vite_gourmand_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+    depends_on:
+      - database
+
+  mongodb:
+    image: mongo:7
+    container_name: vite_gourmand_mongodb
+    restart: always
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: vite_gourmand_mailpit
+    restart: always
+    ports:
+      - "8025:8025"
+      - "1026:1025"
+
+volumes:
+  db_data:
+  mongo_data:

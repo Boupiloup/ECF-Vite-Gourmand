@@ -174,110 +174,59 @@ include_once __DIR__ . '/../includes/header.php';
                     <form method="POST" class="commande-page-form">
                         <div class="commande-page-form-group">
                             <label for="nom">Nom</label>
-                            <input 
-                                type="text" 
-                                id="nom" 
-                                name="nom"
-                                value="<?= htmlspecialchars($utilisateur['nom'] ?? '') ?>" 
-                                required
-                            >
+                            <input type="text" id="nom" name="nom"
+                                value="<?= htmlspecialchars($utilisateur['nom'] ?? '') ?>" required>
                         </div>
 
                         <div class="commande-page-form-group">
                             <label for="prenom">Prénom</label>
-                            <input 
-                                type="text" 
-                                id="prenom" 
-                                name="prenom"
-                                value="<?= htmlspecialchars($utilisateur['prenom'] ?? '') ?>" 
-                                required
-                            >
+                            <input type="text" id="prenom" name="prenom"
+                                value="<?= htmlspecialchars($utilisateur['prenom'] ?? '') ?>" required>
                         </div>
 
                         <div class="commande-page-form-group">
                             <label for="email">Email</label>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email"
-                                value="<?= htmlspecialchars($utilisateur['email'] ?? '') ?>" 
-                                required
-                            >
+                            <input type="email" id="email" name="email"
+                                value="<?= htmlspecialchars($utilisateur['email'] ?? '') ?>" required>
                         </div>
 
                         <div class="commande-page-form-group">
                             <label for="telephone">Téléphone</label>
-                            <input 
-                                type="tel" 
-                                id="telephone" 
-                                name="telephone"
-                                value="<?= htmlspecialchars($utilisateur['telephone'] ?? '') ?>" 
-                                required
-                            >
+                            <input type="tel" id="telephone" name="telephone"
+                                value="<?= htmlspecialchars($utilisateur['telephone'] ?? '') ?>" required>
                         </div>
 
                         <div class="commande-page-form-group">
                             <label for="personnes">Nombre de personnes</label>
-                            <input 
-                                type="number" 
-                                id="personnes" 
-                                name="personnes" 
-                                min="1" 
-                                required
-                            >
+                            <input type="number" id="personnes" name="personnes" min="1" required>
                         </div>
 
                         <div class="commande-page-form-group">
                             <label for="ville">Ville</label>
-                            <input 
-                                type="text" 
-                                id="ville" 
-                                name="ville"
-                                value="<?= htmlspecialchars($utilisateur['ville'] ?? '') ?>" 
-                                required
-                            >
+                            <input type="text" id="ville" name="ville"
+                                value="<?= htmlspecialchars($utilisateur['ville'] ?? '') ?>" required>
                         </div>
 
                         <div class="commande-page-form-group">
                             <label for="code_postal">Code postal</label>
-                            <input 
-                                type="text" 
-                                id="code_postal" 
-                                name="code_postal"
-                                value="<?= htmlspecialchars($utilisateur['code_postal'] ?? '') ?>" 
-                                required
-                            >
+                            <input type="text" id="code_postal" name="code_postal"
+                                value="<?= htmlspecialchars($utilisateur['code_postal'] ?? '') ?>" required>
                         </div>
 
                         <div class="commande-page-form-group">
                             <label for="adresse">Adresse de la prestation</label>
-                            <input 
-                                type="text" 
-                                id="adresse" 
-                                name="adresse"
-                                value="<?= htmlspecialchars($utilisateur['adresse'] ?? '') ?>" 
-                                required
-                            >
+                            <input type="text" id="adresse" name="adresse"
+                                value="<?= htmlspecialchars($utilisateur['adresse'] ?? '') ?>" required>
                         </div>
 
                         <div class="commande-page-form-group">
                             <label for="heure">Heure souhaitée</label>
-                            <input 
-                                type="time" 
-                                id="heure" 
-                                name="heure" 
-                                required
-                            >
+                            <input type="time" id="heure" name="heure" required>
                         </div>
 
                         <div class="commande-page-form-group">
                             <label for="date">Date de la prestation</label>
-                            <input 
-                                type="date" 
-                                id="date" 
-                                name="date" 
-                                required
-                            >
+                            <input type="date" id="date" name="date" required>
                         </div>
 
                         <button type="submit" class="commande-page-button">Passer la commande</button>
@@ -311,23 +260,27 @@ include_once __DIR__ . '/../includes/header.php';
                         <?= htmlspecialchars($menu['stock_disponible']); ?>
                     </p>
 
-                    <p id="livraisonTempReel">
+                    <p>
                         <strong>Livraison :</strong>
-                        <?= htmlspecialchars(number_format($livraison, 2, ',', ' ')) ?> €
+                        <span id="livraisonTempReel"><?= htmlspecialchars(number_format($livraison, 2, ',', ' ')) ?>
+                            €</span>
                     </p>
 
-                    <p id="reductionTempReel">
+                    <p>
                         <strong>Réduction :</strong>
-                        <?= htmlspecialchars(number_format($reduction, 2, ',', ' ')) ?> €
+                        <span id="reductionTempReel"><?= htmlspecialchars(number_format($reduction, 2, ',', ' ')) ?>
+                            €</span>
                     </p>
 
-                    <p id="totalTempReel">
+                    <p>
                         <strong>Total estimé :</strong>
-                        <?php if ($totalFinal !== null): ?>
-                            <?= htmlspecialchars(number_format($totalFinal, 2, ',', ' ')); ?> €
-                        <?php else: ?>
-                            À calculer
-                        <?php endif; ?>
+                        <span id="totalTempReel">
+                            <?php if ($totalFinal !== null): ?>
+                                <?= htmlspecialchars(number_format($totalFinal, 2, ',', ' ')); ?> €
+                            <?php else: ?>
+                                À calculer
+                            <?php endif; ?>
+                        </span>
                     </p>
 
                 </div>

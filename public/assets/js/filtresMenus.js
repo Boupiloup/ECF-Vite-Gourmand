@@ -45,7 +45,7 @@ function chargerMenus() {
 
 function afficherTousLesMenus(menus) {
     // Je vide les anciennes cartes avant d'afficher les nouvelles
-    menusGrid.innerHTML = '';
+    menusGrid.replaceChildren();
 
     // Si aucun menu ne correspond aux filtres, j'affiche un message
     if (menus.length === 0) {
